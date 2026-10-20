@@ -1,0 +1,146 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, projects } from '../data/site';
+---
+
+<Base title={`${site.name} — ${site.role}`}>
+  <main>
+    <header>
+      <h1>{site.name}</h1>
+      <p class="role">{site.role}</p>
+      <p class="intro">{site.intro}</p>
+    </header>
+
+    <section aria-labelledby="work">
+      <h2 id="work">Selected work</h2>
+      <ul class="projects">
+        {
+          projects.map((p) => (
+            <li>
+              <div class="project-head">
+                <h3>{p.href ? <a href={p.href}>{p.title}</a> : p.title}</h3>
+                <span class="year">{p.year}</span>
+              </div>
+              <p>{p.description}</p>
+              <ul class="tags">
+                {p.tags.map((t) => (
+                  <li>{t}</li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <footer>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      {site.links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </footer>
+  </main>
+</Base>
+
+<style>
+  main {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 5rem 1.25rem 3rem;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+
+  .role {
+    color: var(--muted);
+    margin: 0.25rem 0 1.5rem;
+  }
+
+  .intro {
+    font-size: 1.125rem;
+    margin: 0 0 4rem;
+  }
+
+  h2 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+    margin: 0 0 1rem;
+  }
+
+  .projects {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .projects > li {
+    border-top: 1px solid var(--line);
+    padding: 1.5rem 0;
+  }
+
+  .project-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+    margin: 0;
+  }
+
+  h3 a {
+    text-decoration: none;
+  }
+
+  h3 a:hover {
+    color: var(--accent);
+  }
+
+  .year {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .projects p {
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tags li {
+    font-size: 0.8rem;
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.1rem 0.6rem;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    color: var(--muted);
+  }
+
+  footer a:hover {
+    color: var(--accent);
+  }
+</style>
