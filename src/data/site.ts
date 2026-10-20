@@ -6,10 +6,9 @@ export const site = {
   role: 'Designer & developer',
   intro:
     'I build thoughtful digital products. This is a placeholder intro — replace it with a sentence or two about what you do.',
-  email: 'hello@example.com',
   links: [
     { label: 'GitHub', href: 'https://github.com/seb-thomas' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sebastian-thomas-96583826/' },
   ],
 };
 

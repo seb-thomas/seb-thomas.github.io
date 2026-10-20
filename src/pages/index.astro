@@ -46,7 +46,6 @@ import { site, projects } from '../data/site';
     </section>
 
     <footer>
-      <a href={`mailto:${site.email}`}>{site.email}</a>
       {site.links.map((l) => <a href={l.href}>{l.label}</a>)}
     </footer>
   </main>
