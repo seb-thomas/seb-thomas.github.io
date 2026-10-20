@@ -1,14 +1,14 @@
-# seb-thomas-portfolio
+# seb-thomas.github.io
 
 Personal portfolio built with [Astro](https://astro.build) and deployed to GitHub Pages.
 
-Live at: https://seb-thomas.github.io/seb-thomas-portfolio/
+Live at: https://seb-thomas.github.io/
 
 ## Develop
 
 ```sh
 npm install
-npm run dev      # http://localhost:4321/seb-thomas-portfolio/
+npm run dev      # http://localhost:4321/
 npm run build    # outputs to dist/
 npm run preview
 ```
@@ -27,4 +27,4 @@ One-time setup: in the repo go to **Settings → Pages** and set **Source** to *
 
 ### Custom domain
 
-Add a `public/CNAME` file containing the domain, then in `astro.config.mjs` set `site` to `https://your-domain` and remove `base`.
+Add a `public/CNAME` file containing the domain, then in `astro.config.mjs` set `site` to `https://your-domain`.

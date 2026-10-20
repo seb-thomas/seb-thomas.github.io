@@ -1,9 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// Project site served at https://seb-thomas.github.io/seb-thomas-portfolio/.
-// If you add a custom domain, set `site` to it and remove `base`.
+// User site served at the root: https://seb-thomas.github.io/.
+// If you add a custom domain, set `site` to it.
 export default defineConfig({
   site: 'https://seb-thomas.github.io',
-  base: '/seb-thomas-portfolio',
 });
