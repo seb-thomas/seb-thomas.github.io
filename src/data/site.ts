@@ -1,3 +1,6 @@
+import type { ImageMetadata } from 'astro';
+import radioReads from '../assets/projects/radio-reads.png';
+
 export const site = {
   name: 'Seb Thomas',
   role: 'Designer & developer',
@@ -10,7 +13,27 @@ export const site = {
   ],
 };
 
-export const projects = [
+export interface Project {
+  title: string;
+  year: string;
+  description: string;
+  tags: string[];
+  href?: string;
+  repo?: string;
+  image?: { src: ImageMetadata; alt: string };
+}
+
+export const projects: Project[] = [
+  {
+    title: 'Radio Reads',
+    year: '2026',
+    description:
+      'A searchable archive of books discussed on BBC Radio 4 and NPR. A daily pipeline scrapes new episodes, uses Claude to pull out the books being talked about, verifies them against Google Books, then publishes each one with a link to its programme.',
+    tags: ['Django', 'Celery', 'PostgreSQL', 'Scrapy', 'Claude API', 'Astro', 'Tailwind', 'Docker'],
+    href: 'https://radioreads.fun/',
+    repo: 'https://github.com/seb-thomas/scaling-engine',
+    image: { src: radioReads, alt: 'Radio Reads homepage showing this week’s books on air' },
+  },
   {
     title: 'Project one',
     year: '2026',
