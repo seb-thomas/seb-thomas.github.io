@@ -59,8 +59,8 @@ export const projects: Project[] = [
     title: 'Link SDK 2.0',
     year: '2025',
     description:
-      'A redesign of Lean’s Link SDK, the flow people use to connect their bank and make payments inside other apps. Clearer MFA guidance, rewritten copy, dark mode and layouts that adapt from mobile to desktop, rolled out over the air with feature flags.',
-    tags: ['Product design', 'Design system', 'Mobile', 'Dark mode'],
+      'Lead engineer on the rebuild of Lean’s Link SDK, the embedded flow people use to connect their bank and pay inside other apps. We moved it to a TypeScript component library on Radix UI and Storybook, drove each bank’s MFA steps from a state machine, and shipped it over the air in phases behind feature flags, watched by Sentry. Connect conversion rose 15% and payment success went from 75% to 89%.',
+    tags: ['TypeScript', 'Radix UI', 'Storybook', 'State machines', 'Feature flags', 'Sentry'],
     href: 'https://www.figma.com/design/eJ6wAodx2x8dCCcYmU46s9/Lean-Link-SDK-2.0--UAE----Community--Community-?node-id=1-21024',
     image: { src: linkSdk, alt: 'Link SDK “Let’s connect your account” screen on desktop' },
   },
