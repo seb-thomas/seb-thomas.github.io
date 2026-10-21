@@ -13,8 +13,14 @@
     // the largest size that fits the screen.
     const original = img.closest('picture') ?? img;
     const copy = original.cloneNode(true) as HTMLElement;
-    copy.querySelectorAll('source, img').forEach((el) => el.setAttribute('sizes', '95vw'));
-    copy.querySelector('img')?.removeAttribute('loading');
+    // Size it explicitly to the largest box that fits the screen; left to
+    // itself the copy keeps the thumbnail's intrinsic size.
+    const ratio = img.naturalWidth / img.naturalHeight || Number(img.getAttribute('width')) / Number(img.getAttribute('height'));
+    const size = `min(95vw, calc(95vh * ${ratio}))`;
+    const big = copy instanceof HTMLImageElement ? copy : copy.querySelector('img')!;
+    [big, ...copy.querySelectorAll('source')].forEach((el) => el.setAttribute('sizes', size));
+    big.removeAttribute('loading');
+    big.style.width = size;
     dialog.replaceChildren(copy);
     dialog.showModal();
   }
