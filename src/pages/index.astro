@@ -194,11 +194,13 @@ const smalls = projects.filter((p) => p.size === 'small');
 
 <style>
   /* Hero: name lockup around the four section tiles */
+  /* --t is one tile's side. It shrinks with the viewport height too, so the
+     lockup and the two intro paragraphs fit on the first screen. */
   .hero {
-    --t: clamp(150px, 20vw, 230px);
+    --t: clamp(120px, min(20vw, (100svh - 19rem) / 2.6), 230px);
     display: flex;
     justify-content: center;
-    padding-block: clamp(4rem, 9vw, 7rem) clamp(3rem, 7vw, 5.5rem);
+    padding-block: clamp(1.5rem, 6svh, 4rem) clamp(1.5rem, 4svh, 2.5rem);
   }
 
   .lockup {
@@ -332,7 +334,7 @@ const smalls = projects.filter((p) => p.size === 'small');
   @media (max-width: 40rem) {
     .hero {
       display: block;
-      padding-top: 3.5rem;
+      padding-block: 1.5rem;
     }
 
     .lockup {
@@ -355,7 +357,7 @@ const smalls = projects.filter((p) => p.size === 'small');
     }
 
     .last {
-      font-size: 4.125rem;
+      font-size: 3.375rem;
       line-height: 0.88;
     }
 
@@ -369,7 +371,7 @@ const smalls = projects.filter((p) => p.size === 'small');
     }
 
     .tile {
-      height: 76px;
+      height: 60px;
       padding: 0 0.875rem;
       grid-template-columns: auto 1fr auto;
       grid-template-areas: 'num name arrow';
