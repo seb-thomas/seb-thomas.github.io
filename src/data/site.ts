@@ -60,7 +60,7 @@ export const projects: Project[] = [
     stack: ['TypeScript', 'React', 'Radix UI', 'Storybook'],
     description:
       'A rebuild of the flow people use to connect their bank and pay inside other apps. A small team, a new component library and a slow rollout behind feature flags.',
-    panel: 'var(--panel-blue)',
+    panel: 'var(--panel-sdk)',
     size: 'feature',
     layout: 'dialog-and-phones',
     href: '/work/link-sdk/',
