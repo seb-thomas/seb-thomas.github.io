@@ -1,0 +1,41 @@
+---
+import { site } from '../data/site';
+---
+
+<footer class="wrap">
+  <span class="name">{site.firstName} {site.lastName}</span>
+  <span class="links">
+    {site.links.map((l) => <a class="label" href={l.href}>{l.label}</a>)}
+  </span>
+  <a class="label top" href="#">Back to top ↑</a>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1.75rem;
+  }
+
+  .name {
+    font-size: 0.875rem;
+  }
+
+  .links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .top {
+    text-decoration: none;
+  }
+</style>

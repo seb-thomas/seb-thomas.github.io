@@ -17,7 +17,7 @@ Requires Node 22.22+.
 
 ## Editing content
 
-Name, intro, links and projects live in `src/data/site.ts`. The page is `src/pages/index.astro`.
+Name, intro, roles, projects, About and Approach copy live in `src/data/site.ts`. The home page is `src/pages/index.astro`; the Link SDK case study is `src/pages/work/link-sdk.astro`.
 
 ## Deployment
 

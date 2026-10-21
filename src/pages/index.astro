@@ -1,230 +1,740 @@
 ---
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import { site, projects } from '../data/site';
+import Arrow from '../components/Arrow.astro';
+import Footer from '../components/Footer.astro';
+import { site, projects, about, approach } from '../data/site';
+
+const tiles = [
+  { href: '#work', label: 'Work', note: 'Things I’ve made' },
+  { href: '#about', label: 'About', note: 'The short version' },
+  { href: '#approach', label: 'Approach', note: 'How I like to work' },
+  { href: '#contact', label: 'Contact', note: 'Say hello' },
+];
+
+const features = projects.filter((p) => p.size === 'feature');
+const smalls = projects.filter((p) => p.size === 'small');
 ---
 
-<Base title={`${site.name} — ${site.role}`}>
+<Base title={`${site.firstName} ${site.lastName} — ${site.title}`}>
   <main>
-    <header>
-      <h1>{site.name}</h1>
-      <p class="role">{site.role}</p>
-      <p class="intro">{site.intro}</p>
-    </header>
+    <section class="hero wrap">
+      <div class="lockup">
+        <h1 class="first">{site.firstName.toUpperCase()}</h1>
+        <span class="side portfolio" aria-hidden="true">PORTFOLIO</span>
+        <nav class="tiles" aria-label="Sections">
+          {
+            tiles.map((t, i) => (
+              <a class="tile" href={t.href}>
+                <span class="num">0{i + 1}</span>
+                <span class="arrow">
+                  <Arrow size={36} />
+                </span>
+                <span class="name">
+                  {t.label}
+                  <small>{t.note}</small>
+                </span>
+              </a>
+            ))
+          }
+        </nav>
+        <span class="side last" aria-hidden="true">{site.lastName.toUpperCase()}</span>
+        <p class="title">{site.title.toUpperCase()}</p>
+      </div>
+    </section>
 
-    <section aria-labelledby="work">
-      <h2 id="work">Selected work</h2>
-      <ul class="projects">
-        {
-          projects.map((p) => (
-            <li>
-              {p.image && (
-                <a class="shot" href={p.href ?? p.repo}>
-                  <Image src={p.image.src} alt={p.image.alt} widths={[640, 1280]} sizes="(min-width: 42rem) 42rem, 100vw" />
-                </a>
-              )}
-              {p.gallery && (
-                <ul class="gallery">
-                  {p.gallery.map((g) => (
-                    <li>
-                      <Image src={g.src} alt={g.alt} widths={[320, 640]} sizes="(min-width: 42rem) 21rem, 50vw" />
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <div class="project-head">
-                <h3>{p.href ? <a href={p.href}>{p.title}</a> : p.title}</h3>
-                <span class="year">{p.year}</span>
-              </div>
-              <p>{p.description}</p>
-              <ul class="tags">
-                {p.tags.map((t) => (
-                  <li class:list={{ vibes: t === 'Vibes' }}>{t}</li>
-                ))}
-              </ul>
-              {p.repo && (
-                <p class="project-links">
-                  {p.href && <a href={p.href}>Live site</a>}
-                  <a href={p.repo}>GitHub</a>
-                </p>
-              )}
-            </li>
-          ))
-        }
+    <section class="intro wrap">
+      <p class="lead">{site.intro}</p>
+      <p class="note">{site.introNote}</p>
+      <ul class="roles" aria-label="What I do">
+        {site.roles.map((r) => <li>{r}</li>)}
       </ul>
     </section>
 
-    <footer>
-      {site.links.map((l) => <a href={l.href}>{l.label}</a>)}
-    </footer>
+    <section id="work" class="work wrap" aria-labelledby="work-h">
+      <p class="label">Work</p>
+      <h2 id="work-h" class="display work-h">Recent work</h2>
+
+      {
+        features.map((p) => (
+          <article class="project feature">
+            <a class:list={['panel', p.layout]} href={p.href} style={`background: ${p.panel}`} aria-label={p.title}>
+              {p.layout === 'dialog-and-phones' && (
+                <>
+                  <Image class="dialog" src={p.shots[0].src} alt={p.shots[0].alt} widths={[480, 960]} sizes="(min-width: 60rem) 30rem, 80vw" />
+                  {p.shots.slice(1).map((s) => (
+                    <Image class="phone" src={s.src} alt={s.alt} widths={[200, 400]} sizes="12.5rem" />
+                  ))}
+                </>
+              )}
+              {p.layout === 'main-and-side' && (
+                <>
+                  <Image class="main" src={p.shots[0].src} alt={p.shots[0].alt} widths={[720, 1440]} sizes="(min-width: 60rem) 45rem, 90vw" />
+                  <span class="side-shots">
+                    {p.shots.slice(1).map((s) => (
+                      <Image src={s.src} alt={s.alt} widths={[400, 800]} sizes="(min-width: 60rem) 22rem, 90vw" />
+                    ))}
+                  </span>
+                </>
+              )}
+            </a>
+            <div class="head">
+              <h3>{p.href ? <a href={p.href}>{p.title}</a> : p.title}</h3>
+              <span class="arrow-mark">
+                <Arrow size={32} />
+              </span>
+            </div>
+            <p class="desc">{p.description}</p>
+            <div class="meta label">
+              <span>{p.stack.join(' / ')}</span>
+              <span class="role">
+                {p.role} · {p.year}
+              </span>
+            </div>
+          </article>
+        ))
+      }
+
+      <div class="smalls">
+        {
+          smalls.map((p) => {
+            const shot = <Image src={p.shots[0].src} alt={p.shots[0].alt} widths={[560, 1120]} sizes="(min-width: 60rem) 32rem, 90vw" />;
+            return (
+              <article class="project small">
+                {p.href ? (
+                  <a class="panel" href={p.href} style={`background: ${p.panel}`} aria-label={p.title}>
+                    {shot}
+                  </a>
+                ) : (
+                  <div class="panel" style={`background: ${p.panel}`}>
+                    {shot}
+                  </div>
+                )}
+                <div class="head">
+                  <h3>{p.href ? <a href={p.href}>{p.title}</a> : p.title}</h3>
+                  <span class="arrow-mark">
+                    <Arrow size={28} />
+                  </span>
+                </div>
+                <p class="desc">{p.description}</p>
+                <div class="meta label">
+                  <span>{p.stack.join(' / ')}</span>
+                  <span class="role">
+                    {p.role} · {p.year}
+                  </span>
+                </div>
+                {p.repo && (
+                  <p class="repo label">
+                    <a href={p.repo}>Source on GitHub ↗</a>
+                  </p>
+                )}
+              </article>
+            );
+          })
+        }
+      </div>
+    </section>
+
+    <section id="about" class="about" aria-labelledby="about-h">
+      <div class="wrap about-inner">
+        <div class="about-text">
+          <p class="label">About</p>
+          <h2 id="about-h" class="display">{about.heading}</h2>
+          {about.paragraphs.map((t) => <p>{t}</p>)}
+          <div class="squares" aria-hidden="true"><span></span><span></span></div>
+        </div>
+        <div class="focus">
+          <p class="label">What I spend time on</p>
+          {
+            about.focus.map((f) => (
+              <div class="focus-item">
+                <h3>{f.title}</h3>
+                <p>{f.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="approach" class="approach" aria-labelledby="approach-h">
+      <div class="wrap">
+        <div class="approach-head">
+          <p class="label">Approach</p>
+          <h2 id="approach-h" class="display">How I like to work</h2>
+        </div>
+        <div class="approach-grid">
+          {
+            approach.map((a) => (
+              <div>
+                <h3>{a.title}</h3>
+                <p>{a.text}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-h">
+      <div class="wrap contact-inner">
+        <div>
+          <p class="label">Contact</p>
+          <h2 id="contact-h" class="display">Good things start with hello.</h2>
+          <a class="email" href={`mailto:${site.email}`}>{site.email} ↗</a>
+        </div>
+        <a class="contact-box" href={`mailto:${site.email}`} aria-label={`Email ${site.firstName}`}>
+          <Arrow size={72} strokeWidth={1.2} />
+        </a>
+      </div>
+    </section>
   </main>
+  <Footer />
 </Base>
 
 <style>
-  main {
-    max-width: 42rem;
-    margin: 0 auto;
-    padding: 5rem 1.25rem 3rem;
-  }
-
-  h1 {
-    font-size: clamp(2rem, 6vw, 3rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin: 0;
-  }
-
-  .role {
-    color: var(--muted);
-    margin: 0.25rem 0 1.5rem;
-  }
-
-  .intro {
-    font-size: 1.125rem;
-    margin: 0 0 4rem;
-  }
-
-  h2 {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    font-weight: 600;
-    margin: 0 0 1rem;
-  }
-
-  .projects {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .projects > li {
-    border-top: 1px solid var(--line);
-    padding: 1.5rem 0;
-  }
-
-  .project-head {
+  /* Hero: name lockup around the four section tiles */
+  .hero {
+    --t: clamp(150px, 20vw, 230px);
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
+    justify-content: center;
+    padding-block: clamp(4rem, 9vw, 7rem) clamp(3rem, 7vw, 5.5rem);
   }
 
-  h3 {
-    font-size: 1.125rem;
+  .lockup {
+    display: grid;
+    grid-template-columns: auto calc(var(--t) * 2) auto;
+    grid-template-areas:
+      '. first .'
+      'portfolio tiles last'
+      '. title .';
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    align-items: center;
+    font-family: var(--display);
+    line-height: 0.9;
+  }
+
+  .first {
+    grid-area: first;
     margin: 0;
+    font-size: calc(var(--t) * 0.348);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    text-align: center;
   }
 
-  h3 a {
+  .side {
+    writing-mode: vertical-rl;
+    text-align: center;
+    letter-spacing: -0.01em;
+  }
+
+  .portfolio {
+    grid-area: portfolio;
+    transform: rotate(180deg);
+    font-size: calc(var(--t) * 0.296);
+    font-weight: 500;
+  }
+
+  .last {
+    grid-area: last;
+    font-size: calc(var(--t) * 0.417);
+    font-weight: 700;
+  }
+
+  .title {
+    grid-area: title;
+    margin: 0;
+    font-size: calc(var(--t) * 0.243);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+
+  .tiles {
+    grid-area: tiles;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tile {
+    height: var(--t);
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'num arrow'
+      'name name';
+    align-content: space-between;
+    background: var(--blue);
+    color: #fff;
     text-decoration: none;
+    font-family: var(--sans);
+    line-height: 1.3;
   }
 
-  h3 a:hover {
-    color: var(--accent);
+  .tile:nth-child(1),
+  .tile:nth-child(3) {
+    border-right: 1px solid #ffffff33;
   }
 
-  .year {
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
+  .tile:nth-child(1),
+  .tile:nth-child(2) {
+    border-bottom: 1px solid #ffffff33;
   }
 
-  .projects p {
-    margin: 0.5rem 0 0.75rem;
+  .tile:nth-child(4) {
+    background: var(--lime);
+    color: var(--fg);
   }
 
-  .tags {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+  .tile:hover {
+    color: inherit;
+    opacity: 0.92;
   }
 
-  .tags li {
-    font-size: 0.8rem;
-    color: var(--muted);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 0.1rem 0.6rem;
+  .tile:nth-child(-n + 3):hover {
+    color: #fff;
   }
 
-  .tags li.vibes {
-    color: #a21caf;
-    border-color: #f0abfc;
-    background: #fdf4ff;
+  .num {
+    grid-area: num;
+    font-family: var(--mono);
+    font-size: 0.6875rem;
   }
 
-  @media (prefers-color-scheme: dark) {
-    .tags li.vibes {
-      color: #f0abfc;
-      border-color: #86198f;
-      background: #2e0a33;
+  .tile .arrow {
+    grid-area: arrow;
+  }
+
+  .name {
+    grid-area: name;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .name small {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.6875rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--blue-soft);
+  }
+
+  .tile:nth-child(4) small {
+    color: inherit;
+  }
+
+  /* On a phone the tiles stack into bars, with the surname down the right */
+  @media (max-width: 40rem) {
+    .hero {
+      display: block;
+      padding-top: 3.5rem;
+    }
+
+    .lockup {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        'first first'
+        'tiles last'
+        'title title';
+      column-gap: 0.5rem;
+      align-items: stretch;
+    }
+
+    .first {
+      font-size: calc((100vw - 2rem) * 0.15);
+      text-align: left;
+    }
+
+    .portfolio {
+      display: none;
+    }
+
+    .last {
+      font-size: 4.125rem;
+      line-height: 0.88;
+    }
+
+    .title {
+      font-size: calc((100vw - 2rem) * 0.118);
+      text-align: left;
+    }
+
+    .tiles {
+      grid-template-columns: 1fr;
+    }
+
+    .tile {
+      height: 76px;
+      padding: 0 0.875rem;
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas: 'num name arrow';
+      align-content: center;
+      align-items: center;
+      column-gap: 0.75rem;
+      border-right: 0 !important;
+      border-bottom: 1px solid #ffffff33;
+    }
+
+    .tile .arrow :global(svg) {
+      width: 24px;
+      height: 24px;
+    }
+
+    .name {
+      font-size: 1.1875rem;
+    }
+
+    .name small {
+      display: none;
     }
   }
 
-  .shot {
-    display: block;
-    margin-bottom: 1rem;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    overflow: hidden;
+  /* Intro */
+  .intro {
+    padding-bottom: 1rem;
   }
 
-  .shot img {
-    display: block;
-    width: 100%;
-    height: auto;
+  .lead {
+    margin: 0;
+    max-width: 52rem;
+    font-size: clamp(1.1875rem, 2vw, 1.5rem);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
   }
 
-  .gallery {
-    list-style: none;
-    padding: 0;
-    margin: -0.25rem 0 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-  }
-
-  .gallery li {
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-
-  .gallery li:last-child:nth-child(odd) {
-    grid-column: span 2;
-  }
-
-  .gallery img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  .project-links {
-    display: flex;
-    gap: 1.25rem;
-    margin: 0.75rem 0 0;
-    font-size: 0.9rem;
-  }
-
-  .project-links a:hover {
-    color: var(--accent);
-  }
-
-  footer {
-    border-top: 1px solid var(--line);
-    padding-top: 1.5rem;
-    margin-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
+  .note {
+    margin: 1rem 0 3rem;
+    max-width: 52rem;
+    font-size: 1.0625rem;
     color: var(--muted);
   }
 
-  footer a:hover {
-    color: var(--accent);
+  .roles {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
+    border-top: 1px solid var(--line);
+    font-size: 0.875rem;
+  }
+
+  .roles li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .roles li::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--blue);
+  }
+
+  /* Work */
+  .work {
+    padding-top: clamp(4.5rem, 9vw, 7rem);
+  }
+
+  .work-h {
+    margin: 1rem 0 2rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1;
+  }
+
+  .project.feature {
+    padding-bottom: 5rem;
+  }
+
+  .panel {
+    display: block;
+  }
+
+  .panel.dialog-and-phones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1.25rem, 5vw, 4rem) clamp(1.25rem, 5vw, 4.5rem);
+  }
+
+  .dialog-and-phones .dialog {
+    flex: 2 1 22.5rem;
+    min-width: 0;
+    max-width: 30rem;
+    border-radius: 12px;
+    border: 1px solid #c6ccea;
+  }
+
+  .dialog-and-phones .phone {
+    flex: 1 1 8.75rem;
+    min-width: 0;
+    max-width: 12.5rem;
+    border-radius: 12px;
+  }
+
+  .panel.main-and-side {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    padding: clamp(1.25rem, 4.5vw, 3.5rem) clamp(1.25rem, 5vw, 4rem);
+  }
+
+  .main-and-side .main {
+    flex: 2 1 30rem;
+    min-width: 0;
+  }
+
+  .side-shots {
+    flex: 1 1 15rem;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .main-and-side img {
+    border-radius: 6px;
+    border: 1px solid #cdd1c0;
+  }
+
+  .smalls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 21.25rem), 1fr));
+    gap: 1.75rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .small .panel {
+    padding: clamp(1.25rem, 3.5vw, 2.75rem);
+  }
+
+  .small .panel img {
+    border-radius: 6px;
+  }
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .head h3 {
+    margin: 0;
+    font-family: var(--display);
+    font-size: clamp(1.625rem, 2.5vw, 1.875rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .small .head h3 {
+    font-size: 1.625rem;
+  }
+
+  .head h3 a {
+    text-decoration: none;
+  }
+
+  .arrow-mark {
+    color: var(--blue);
+    display: flex;
+  }
+
+  .desc {
+    margin: 0.375rem 0 0.875rem;
+    max-width: 47.5rem;
+    color: var(--body);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .meta .role {
+    color: var(--blue);
+  }
+
+  .repo {
+    margin-top: 0.75rem;
+  }
+
+  /* About */
+  .about {
+    margin-top: 5rem;
+    background: var(--sage);
+  }
+
+  .about-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4rem;
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .about-text {
+    flex: 1 1 25rem;
+    min-width: 0;
+  }
+
+  .about-text h2 {
+    margin: 1.5rem 0;
+    font-size: clamp(2.125rem, 4vw, 3rem);
+  }
+
+  .about-text p:not(.label) {
+    margin: 0 0 0.875rem;
+    max-width: 29rem;
+    color: var(--body);
+  }
+
+  .squares {
+    display: flex;
+    margin-top: 1.75rem;
+  }
+
+  .squares span {
+    width: 44px;
+    height: 44px;
+    background: var(--blue);
+  }
+
+  .squares span + span {
+    background: var(--lime);
+  }
+
+  .focus {
+    flex: 1 1 28.75rem;
+    min-width: 0;
+  }
+
+  .focus .label {
+    padding-bottom: 0.75rem;
+  }
+
+  .focus-item {
+    padding-block: 1rem;
+    border-top: 1px solid var(--sage-line);
+  }
+
+  .focus-item:last-child {
+    border-bottom: 1px solid var(--sage-line);
+  }
+
+  .focus-item h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .focus-item p {
+    margin: 0.25rem 0 0;
+    font-size: 0.875rem;
+    color: var(--body);
+  }
+
+  /* Approach */
+  .approach {
+    background: var(--blue);
+    color: #fff;
+    padding-block: clamp(3.5rem, 7vw, 5.5rem) clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .approach-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #ffffff55;
+  }
+
+  .approach-head h2 {
+    font-size: clamp(2.125rem, 3.5vw, 2.75rem);
+    letter-spacing: -0.02em;
+  }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16.25rem, 1fr));
+    gap: 2.5rem;
+    padding-top: 1.75rem;
+  }
+
+  .approach-grid h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.375rem;
+    font-weight: 500;
+  }
+
+  .approach-grid p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--blue-soft);
+  }
+
+  /* Contact */
+  .contact {
+    background: var(--lime);
+  }
+
+  .contact-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2.5rem;
+    padding-block: clamp(3.5rem, 7vw, 5rem) clamp(3rem, 7vw, 5.5rem);
+  }
+
+  .contact h2 {
+    margin-top: 2rem;
+    max-width: 14ch;
+    font-size: clamp(3.25rem, 7vw, 5.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+
+  .email {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-top: 1.5rem;
+    font-weight: 500;
+  }
+
+  .contact-box {
+    width: clamp(4rem, 9vw, 7.5rem);
+    height: clamp(4rem, 9vw, 7.5rem);
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .contact-box:hover {
+    color: #fff;
+    opacity: 0.92;
+  }
+
+  .contact-box :global(svg) {
+    width: 60%;
+    height: 60%;
   }
 </style>

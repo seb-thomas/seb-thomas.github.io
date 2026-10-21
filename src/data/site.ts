@@ -1,118 +1,137 @@
 import type { ImageMetadata } from 'astro';
 import radioReads from '../assets/projects/radio-reads.png';
-import linkSdk from '../../sources/link-sdk-v2/figma/desktop/light/connect-initial-payments.png';
+import sdkDialog from '../assets/projects/link-sdk-dialog.png';
+import sdkSelectBank from '../../sources/link-sdk-v2/figma/mobile/light/connect-select-bank.png';
+import sdkOtp from '../../sources/link-sdk-v2/figma/mobile/light/connect-mfa-otp.png';
+import sdkPayDark from '../../sources/link-sdk-v2/figma/mobile/dark/pay-confirm.png';
 import sdkStoryView from '../../sources/storybook/bank-priming-adcb.png';
-import sdkStoryDocs from '../../sources/storybook/button-docs.png';
 import flagOverview from '../../sources/flag-audit/overview.png';
-import flagBulk from '../../sources/flag-audit/selection-bar-menu.png';
-import flagDark from '../../sources/flag-audit/dark-mode.png';
 import dashPayments from '../../sources/dashboard/test/desktop/light/payments-date-range.png';
-import dashPaymentMenu from '../../sources/dashboard/test/desktop/light/payments-row-menu.png';
-import dashCustomers from '../../sources/dashboard/test/desktop/light/customers-list.png';
-import dashCustomer from '../../sources/dashboard/test/desktop/light/customers-detail.png';
 import dashPalette from '../../sources/dashboard/test/desktop/light/customers-search-palette.png';
-import dashSearch from '../../sources/dashboard/test/desktop/light/search-results.png';
-import dashLogs from '../../sources/dashboard/test/desktop/light/logs-list.png';
-import dashBanks from '../../sources/dashboard/test/desktop/light/bank-connections-default.png';
-import dashAccounts from '../../sources/dashboard/live/desktop/light/your-accounts-list.png';
-import dashWorkspaces from '../../sources/dashboard/live/desktop/light/customers-workspace-menu.png';
+import dashCustomer from '../../sources/dashboard/test/desktop/light/customers-detail.png';
 
 export const site = {
-  name: 'Seb Thomas',
-  role: 'Designer & developer',
+  firstName: 'Sebastian',
+  lastName: 'Thomas',
+  title: 'Web developer',
+  email: 'sebastianjthomas@gmail.com',
   intro:
-    'I build thoughtful digital products. This is a placeholder intro — replace it with a sentence or two about what you do.',
+    'I’m an engineering manager in London. For the last six years I’ve been at Lean Technologies, working on the SDK and dashboard people use to connect their bank and pay across MENA.',
+  introNote: 'This is where I put things I’m working on — some from my day job, some just ideas I wanted to try.',
+  roles: ['Web developer', 'Engineering leader', 'Design-curious'],
   links: [
     { label: 'GitHub', href: 'https://github.com/seb-thomas' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sebastian-thomas-96583826/' },
   ],
 };
 
+type Shot = { src: ImageMetadata; alt: string };
+
 export interface Project {
   title: string;
   year: string;
+  role: string;
+  stack: string[];
   description: string;
-  tags: string[];
+  /** Background colour of the panel behind the screenshots. */
+  panel: string;
+  /** `feature` projects get a full-width panel; `small` ones sit two to a row. */
+  size: 'feature' | 'small';
+  /** How the screenshots are arranged in the panel. */
+  layout: 'dialog-and-phones' | 'main-and-side' | 'single';
+  shots: Shot[];
   href?: string;
   repo?: string;
-  image?: { src: ImageMetadata; alt: string };
-  gallery?: { src: ImageMetadata; alt: string }[];
 }
 
 export const projects: Project[] = [
   {
-    title: 'Lean Dashboard',
-    year: '2026',
-    description:
-      'The dashboard Lean’s clients use to run their open banking integration: customers, payments and payouts, account verification, developer tools like logs, webhooks and test users, and bank connections, all reachable from a ⌘K search.',
-    tags: ['Product design', 'Dashboard', 'Data tables', 'Search'],
-    href: 'https://dashboard.leantech.me/',
-    image: { src: dashPayments, alt: 'Payments page with volume charts and the date range picker open' },
-    gallery: [
-      { src: dashCustomers, alt: 'Customers table with pagination' },
-      { src: dashCustomer, alt: 'Customer details drawer open beside the customers table' },
-      { src: dashPalette, alt: '⌘K search palette open over the customers page' },
-      { src: dashSearch, alt: 'Search results for “test” grouped into customers and payments' },
-      { src: dashPaymentMenu, alt: 'Payment row actions menu' },
-      { src: dashLogs, alt: 'API logs with request charts and status table' },
-      { src: dashBanks, alt: 'Bank connections settings with per-bank toggles' },
-      { src: dashAccounts, alt: 'Your accounts page listing connected bank accounts' },
-      { src: dashWorkspaces, alt: 'Workspace menu for switching between Test, Pre-live and Live' },
-    ],
-  },
-  {
     title: 'Link SDK 2.0',
     year: '2025',
+    role: 'Lead engineer',
+    stack: ['TypeScript', 'React', 'Radix UI', 'Storybook'],
     description:
-      'Lead engineer on the rebuild of Lean’s Link SDK, the embedded flow people use to connect their bank and pay inside other apps. We moved it to a TypeScript component library on Radix UI and Storybook, drove each bank’s MFA steps from a state machine, and shipped it over the air in phases behind feature flags, watched by Sentry. Connect conversion rose 15% and payment success went from 75% to 89%.',
-    tags: ['TypeScript', 'Radix UI', 'Storybook', 'State machines', 'Feature flags', 'Sentry'],
-    href: 'https://www.figma.com/design/eJ6wAodx2x8dCCcYmU46s9/Lean-Link-SDK-2.0--UAE----Community--Community-?node-id=1-21024',
-    image: { src: linkSdk, alt: 'Link SDK “Let’s connect your account” screen on desktop' },
-    gallery: [
-      { src: sdkStoryView, alt: 'Storybook showing the ADCB bank priming view with its controls' },
-      { src: sdkStoryDocs, alt: 'Storybook docs page for the Button component with its props table' },
+      'A rebuild of the flow people use to connect their bank and pay inside other apps. A small team, a new component library and a slow rollout behind feature flags.',
+    panel: '#DDE2FB',
+    size: 'feature',
+    layout: 'dialog-and-phones',
+    href: '/work/link-sdk/',
+    shots: [
+      { src: sdkDialog, alt: 'Link SDK “Let’s connect your account” dialog on desktop' },
+      { src: sdkOtp, alt: 'Mobile: enter the one-time passcode' },
+      { src: sdkPayDark, alt: 'Mobile: confirm payment in dark mode' },
     ],
   },
   {
-    title: 'Feature flag audit',
+    title: 'Lean Dashboard',
     year: '2026',
+    role: 'Engineering manager',
+    stack: ['React', 'React Query', 'Data tables'],
     description:
-      'Vibe-coded with Claude Code to clear out dead GrowthBook flags. It checks all 188 flags against code search across 126 repos, commit history, GrowthBook’s own state and Slack, then sorts each into cleanup, review or active with a confidence score and the evidence behind it. Selecting flags gives a ready-to-paste Claude Code prompt to archive them or strip them from code, or a Slack message to check in with owners.',
-    tags: ['Vibes', 'Claude Code', 'GrowthBook', 'GitHub', 'Slack'],
-    image: { src: flagOverview, alt: 'Flag audit overview: 188 flags sorted into archived, cleanup, review, active, excluded and unshipped' },
-    gallery: [
-      { src: flagBulk, alt: 'Bulk actions menu for selected flags: archive in GrowthBook, remove from code or draft an owner check-in' },
-      { src: flagDark, alt: 'Flag audit overview in dark mode' },
+      'Where Lean’s clients run their integration: customers, payments, logs and bank connections, all one ⌘K away. I managed the team that built it, and wrote some of the frontend.',
+    panel: '#E4E7DA',
+    size: 'feature',
+    layout: 'main-and-side',
+    href: 'https://dashboard.leantech.me/',
+    shots: [
+      { src: dashPayments, alt: 'Payments page with volume charts and the date range picker open' },
+      { src: dashPalette, alt: '⌘K search palette open over the customers page' },
+      { src: dashCustomer, alt: 'Customer details drawer open beside the customers table' },
     ],
   },
   {
     title: 'Radio Reads',
     year: '2026',
+    role: 'Side project',
+    stack: ['Django', 'Claude API', 'Astro'],
     description:
-      'A searchable archive of books discussed on BBC Radio 4 and NPR. A daily pipeline scrapes new episodes, uses Claude to pull out the books being talked about, verifies them against Google Books, then publishes each one with a link to its programme.',
-    tags: ['Django', 'Celery', 'PostgreSQL', 'Scrapy', 'Claude API', 'Astro', 'Tailwind', 'Docker'],
+      'Every book discussed on BBC Radio 4 and NPR, found by a daily pipeline and Claude, then checked against Google Books.',
+    panel: '#CEC6F6',
+    size: 'small',
+    layout: 'single',
     href: 'https://radioreads.fun/',
     repo: 'https://github.com/seb-thomas/scaling-engine',
-    image: { src: radioReads, alt: 'Radio Reads homepage showing this week’s books on air' },
+    shots: [{ src: radioReads, alt: 'Radio Reads homepage showing this week’s books on air' }],
   },
   {
-    title: 'Project one',
+    title: 'Feature flag audit',
     year: '2026',
-    description: 'A short summary of the project, the problem it solved and your role.',
-    tags: ['Product design', 'Astro'],
-    href: '#',
-  },
-  {
-    title: 'Project two',
-    year: '2025',
-    description: 'Another project. Edit or remove these in src/data/site.ts.',
-    tags: ['Frontend', 'TypeScript'],
-    href: '#',
-  },
-  {
-    title: 'Project three',
-    year: '2024',
-    description: 'A third example entry to show the layout.',
-    tags: ['Research'],
+    role: 'Vibe-coded',
+    stack: ['Claude Code', 'GrowthBook'],
+    description:
+      'A small tool I vibe-coded with Claude Code to find dead GrowthBook flags across 126 repos, and write the prompts to clean them up.',
+    panel: '#EEF3D0',
+    size: 'small',
+    layout: 'single',
+    shots: [{ src: flagOverview, alt: 'Flag audit overview: 188 flags sorted into cleanup, review and active' }],
   },
 ];
+
+export const about = {
+  heading: 'Fifteen years of building for the web.',
+  paragraphs: [
+    'I studied interaction design, then spent about ten years as a frontend developer for agencies and clients like Adidas, Square Enix and the Home Office.',
+    'I joined Lean in 2020 to build its first JavaScript SDK. Now I manage the team behind its customer platform and SDKs, and still write code. Lately I’m curious about how AI changes who gets to build interfaces — and I’m designing more than I used to.',
+  ],
+  focus: [
+    { title: 'Frontend architecture', text: 'React, TypeScript, React Query, design systems and component libraries in Storybook.' },
+    { title: 'Shipping safely', text: 'Phased rollouts, feature flags, CI/CD with GitHub Actions, Vite and Vitest.' },
+    { title: 'Knowing what’s happening', text: 'Observability with Sentry and Grafana, service-level indicators, alerting and incident reviews.' },
+    { title: 'Teams', text: 'Coaching, hiring, and running Lean’s frontend guild.' },
+  ],
+};
+
+export const approach = [
+  { title: 'Ask better questions.', text: 'Understand the people, the problem and the possibilities before choosing a direction.' },
+  { title: 'Make the idea real.', text: 'Move between sketches, prototypes and code. Learn by putting something in front of people.' },
+  { title: 'Keep iterating.', text: 'Ship small, watch what happens, adjust. Flags and good monitoring are what make that safe.' },
+];
+
+export const linkSdk = {
+  storybook: { src: sdkStoryView, alt: 'Storybook showing the ADCB bank priming view with its controls' } as Shot,
+  phones: [
+    { src: sdkSelectBank, alt: 'Mobile: select your bank' },
+    { src: sdkOtp, alt: 'Mobile: enter the one-time passcode' },
+    { src: sdkPayDark, alt: 'Mobile: confirm payment in dark mode' },
+  ] as Shot[],
+};
