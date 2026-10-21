@@ -258,6 +258,10 @@ figcaption {
   padding-block: 4rem;
 }
 
+.next .label {
+  margin-bottom: 1rem;
+}
+
 .next .display {
   font-size: clamp(2.25rem, 5vw, 3.25rem);
   line-height: 1;

@@ -12,6 +12,20 @@ const facts = [
   { term: 'Year', value: flags.year },
 ];
 
+const steps = [
+  {
+    title: 'Gather the evidence',
+    text: 'For every flag it searches the code, reads the commit history, checks GrowthBook’s own state and looks for mentions in Slack.',
+  },
+  {
+    title: 'A verdict per flag',
+    text: 'Each flag lands in cleanup, review or active, with a confidence score and the evidence that got it there, so nobody has to take it on trust.',
+  },
+  {
+    title: 'Hand off the cleanup',
+    text: 'Select some flags and it writes a ready-to-paste Claude Code prompt to archive them or strip them from the code, or a Slack message to check in with their owners.',
+  },
+];
 ---
 
 <Case project={flags} intro="A small tool I vibe-coded to find the feature flags we’d forgotten about, and help get rid of them." facts={facts}>
@@ -37,16 +51,15 @@ const facts = [
 
   <section class="wrap row">
     <h2 class="label">How it works</h2>
-    <div class="prose">
-      <p>
-        For every flag it searches the code, reads the commit history, checks GrowthBook’s own state and looks for mentions in Slack.
-        Each one lands in cleanup, review or active with a confidence score and the evidence behind it, so nobody has to take it on
-        trust.
-      </p>
-      <p class="soft">
-        Select a few flags and it writes the Claude Code prompt to archive them or strip them from the code, or a Slack message to
-        check in with their owners.
-      </p>
+    <div class="steps">
+      {
+        steps.map((s) => (
+          <div>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))
+      }
     </div>
   </section>
 

@@ -7,10 +7,10 @@ import ThemedImage from '../components/ThemedImage.astro';
 import { site, projects, about, approach } from '../data/site';
 
 const tiles = [
-  { href: '#work', label: 'Work' },
-  { href: '#about', label: 'About' },
-  { href: '#approach', label: 'Approach' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#work', label: 'Work', note: 'Things I’ve made' },
+  { href: '#about', label: 'About', note: 'The short version' },
+  { href: '#approach', label: 'Approach', note: 'How I like to work' },
+  { href: '#contact', label: 'Contact', note: 'Say hello' },
 ];
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -31,7 +31,13 @@ const smalls = projects.filter((p) => p.size === 'small');
             tiles.map((t, i) => (
               <a class="tile" href={t.href}>
                 <span class="num">0{i + 1}</span>
-                <span class="name">{t.label}</span>
+                <span class="arrow">
+                  <Arrow size={36} />
+                </span>
+                <span class="name">
+                  {t.label}
+                  <small>{t.note}</small>
+                </span>
               </a>
             ))
           }
@@ -50,6 +56,7 @@ const smalls = projects.filter((p) => p.size === 'small');
     </section>
 
     <section id="work" class="work wrap" aria-labelledby="work-h">
+      <p class="label">Work</p>
       <h2 id="work-h" class="display work-h">Recent work</h2>
 
       {
@@ -77,6 +84,9 @@ const smalls = projects.filter((p) => p.size === 'small');
             </a>
             <div class="head">
               <h3><a href={pageOf(p)}>{p.title}</a></h3>
+              <span class="arrow-mark">
+                <Arrow size={32} />
+              </span>
             </div>
             <p class="desc">{p.description}</p>
             <div class="meta label">
@@ -98,6 +108,9 @@ const smalls = projects.filter((p) => p.size === 'small');
                 </a>
                 <div class="head">
                   <h3><a href={pageOf(p)}>{p.title}</a></h3>
+                  <span class="arrow-mark">
+                    <Arrow size={28} />
+                  </span>
                 </div>
                 <p class="desc">{p.description}</p>
                 <div class="meta label">
@@ -136,11 +149,19 @@ const smalls = projects.filter((p) => p.size === 'small');
 
     <section id="approach" class="approach" aria-labelledby="approach-h">
       <div class="wrap">
-        <div class="approach-inner">
+        <div class="approach-head">
+          <p class="label">Approach</p>
           <h2 id="approach-h" class="display">How I like to work</h2>
-          <div class="approach-text">
-            {approach.map((t) => <p>{t}</p>)}
-          </div>
+        </div>
+        <div class="approach-grid">
+          {
+            approach.map((a) => (
+              <div>
+                <h3>{a.title}</h3>
+                <p>{a.text}</p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -148,7 +169,8 @@ const smalls = projects.filter((p) => p.size === 'small');
     <section id="contact" class="contact" aria-labelledby="contact-h">
       <div class="wrap contact-inner">
         <div>
-          <h2 id="contact-h" class="display">Get in touch</h2>
+          <p class="label">Contact</p>
+          <h2 id="contact-h" class="display">Good things start with hello.</h2>
           <a class="email" href={`mailto:${site.email}`}>{site.email} ↗</a>
         </div>
         <a class="contact-box" href={`mailto:${site.email}`} aria-label={`Email ${site.firstName}`}>
@@ -253,6 +275,10 @@ const smalls = projects.filter((p) => p.size === 'small');
     height: var(--t);
     padding: 1rem;
     display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'num arrow'
+      'name name';
     align-content: space-between;
     background: var(--blue);
     color: #fff;
@@ -286,13 +312,32 @@ const smalls = projects.filter((p) => p.size === 'small');
   }
 
   .num {
+    grid-area: num;
     font-family: var(--mono);
     font-size: 0.6875rem;
   }
 
+  .tile .arrow {
+    grid-area: arrow;
+  }
+
   .name {
+    grid-area: name;
     font-size: 1.5rem;
     font-weight: 500;
+  }
+
+  .name small {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.6875rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--blue-soft);
+  }
+
+  .tile:nth-child(4) small {
+    color: inherit;
   }
 
   /* On a phone the tiles stack into bars, with the surname down the right */
@@ -338,7 +383,8 @@ const smalls = projects.filter((p) => p.size === 'small');
     .tile {
       height: 60px;
       padding: 0 0.875rem;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: auto 1fr auto;
+      grid-template-areas: 'num name arrow';
       align-content: center;
       align-items: center;
       column-gap: 0.75rem;
@@ -346,8 +392,17 @@ const smalls = projects.filter((p) => p.size === 'small');
       border-bottom: 1px solid #ffffff33;
     }
 
+    .tile .arrow :global(svg) {
+      width: 24px;
+      height: 24px;
+    }
+
     .name {
       font-size: 1.1875rem;
+    }
+
+    .name small {
+      display: none;
     }
   }
 
@@ -510,6 +565,11 @@ const smalls = projects.filter((p) => p.size === 'small');
     text-decoration: none;
   }
 
+  .arrow-mark {
+    color: var(--accent);
+    display: flex;
+  }
+
   .desc {
     margin: 0.375rem 0 0.875rem;
     max-width: 47.5rem;
@@ -608,30 +668,37 @@ const smalls = projects.filter((p) => p.size === 'small');
     padding-block: clamp(3.5rem, 7vw, 5.5rem) clamp(3.5rem, 7vw, 6rem);
   }
 
-  .approach-inner {
+  .approach-head {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem 4rem;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #ffffff55;
   }
 
-  .approach-inner h2 {
-    flex: 1 1 17.5rem;
+  .approach-head h2 {
     font-size: clamp(2.125rem, 3.5vw, 2.75rem);
     letter-spacing: -0.02em;
   }
 
-  .approach-text {
-    flex: 999 1 35rem;
-    min-width: 0;
-    max-width: 43.75rem;
-    font-size: 1.1875rem;
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16.25rem, 1fr));
+    gap: 2.5rem;
+    padding-top: 1.75rem;
   }
 
-  .approach-text p {
-    margin: 0 0 1rem;
+  .approach-grid h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.375rem;
+    font-weight: 500;
   }
 
-  .approach-text p + p {
+  .approach-grid p {
+    margin: 0;
+    font-size: 0.875rem;
     color: var(--blue-soft);
   }
 
