@@ -1,0 +1,70 @@
+---
+// Shared frame for project pages under /work/: header, title, facts,
+// external links, then the page's own sections, then a link to the next project.
+import Base from './Base.astro';
+import Arrow from '../components/Arrow.astro';
+import Footer from '../components/Footer.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { projects, type Project } from '../data/site';
+import '../styles/case.css';
+
+interface Props {
+  project: Project;
+  intro: string;
+  facts: { term: string; value: string }[];
+  /** Who the work was for, shown top right. */
+  context?: string;
+}
+
+const { project, intro, facts, context = 'Lean Technologies' } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const next = projects[(projects.indexOf(project) + 1) % projects.length];
+---
+
+<Base title={`${project.title} — Sebastian Thomas`} description={project.description}>
+  <header class="wrap top">
+    <a class="label" href={`${base}/`}>← Sebastian Thomas</a>
+    <span class="label muted">{context} · {project.year}</span>
+  </header>
+
+  <main>
+    <section class="wrap title">
+      <h1 class="display">{project.title}</h1>
+      <p>{intro}</p>
+      {
+        project.links && (
+          <p class="links label">
+            {project.links.map((l) => (
+              <a href={l.href}>{l.label} ↗</a>
+            ))}
+          </p>
+        )
+      }
+    </section>
+
+    <dl class="wrap facts">
+      {
+        facts.map((f) => (
+          <div>
+            <dt class="label">{f.term}</dt>
+            <dd>{f.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <slot />
+
+    <a class="next" href={`${base}/work/${next.slug}/`}>
+      <div class="wrap next-inner">
+        <div>
+          <p class="label">Next</p>
+          <span class="display">{next.title}</span>
+        </div>
+        <span class="next-box"><Arrow size={52} strokeWidth={1.2} /></span>
+      </div>
+    </a>
+  </main>
+  <Footer />
+  <Lightbox />
+</Base>

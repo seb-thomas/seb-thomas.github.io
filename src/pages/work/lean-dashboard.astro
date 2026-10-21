@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import Case from '../../layouts/Case.astro';
+import { projects, leanDashboard } from '../../data/site';
+
+const dash = projects.find((p) => p.slug === 'lean-dashboard')!;
+
+const facts = [
+  { term: 'Role', value: 'Engineering manager' },
+  { term: 'Users', value: 'Lean’s clients and their developers' },
+  { term: 'Stack', value: 'React, TypeScript, React Query' },
+  { term: 'Year', value: dash.year },
+];
+---
+
+<Case project={dash} intro="The dashboard Lean’s clients use to run their open banking integration." facts={facts}>
+  <div class="wrap">
+    <div class="zoomable hero-panel full" style={`background: ${dash.panel}`}>
+      <Image src={dash.shots[0].src} alt={dash.shots[0].alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
+    </div>
+  </div>
+
+  <section class="wrap row">
+    <h2 class="label">What it is</h2>
+    <div class="prose">
+      <p>
+        Everything a client needs once they’ve integrated Lean: their customers, payments and payouts, account verification, and
+        developer tools like logs, webhooks and test users. Bank connections and the look of the Link SDK are set here too.
+      </p>
+      <p class="soft">
+        Almost everything is reachable from one ⌘K search. I managed the team that built it, and wrote some of the frontend.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap figures last-row">
+    {
+      leanDashboard.map((s) => (
+        <figure>
+          <div class="zoomable fig-panel sage">
+            <Image src={s.src} alt={s.alt} widths={[560, 1120, 2400]} sizes="(min-width: 60rem) 32rem, 90vw" />
+          </div>
+          <figcaption class="label">{s.caption}</figcaption>
+        </figure>
+      ))
+    }
+  </section>
+</Case>

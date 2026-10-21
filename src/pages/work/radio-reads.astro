@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import Case from '../../layouts/Case.astro';
+import { projects, radioReadsShots } from '../../data/site';
+
+const rr = projects.find((p) => p.slug === 'radio-reads')!;
+
+const facts = [
+  { term: 'Role', value: 'Everything — it’s mine' },
+  { term: 'Backend', value: 'Django, Celery, PostgreSQL, Scrapy' },
+  { term: 'Frontend', value: 'Astro, Tailwind' },
+  { term: 'Also', value: 'Claude API, Google Books, Docker' },
+];
+
+const steps = [
+  { title: 'Scrape', text: 'A daily job collects new episodes from BBC Radio 4 and NPR programmes about books.' },
+  { title: 'Read', text: 'Claude reads each episode’s description and pulls out the books being talked about.' },
+  { title: 'Check', text: 'Each book is verified against Google Books, then published with a link back to the programme.' },
+];
+---
+
+<Case project={rr} context="Side project" intro="A searchable archive of the books discussed on BBC Radio 4 and NPR." facts={facts}>
+  <div class="wrap">
+    <div class="zoomable hero-panel full" style={`background: ${rr.panel}`}>
+      <Image src={rr.shots[0].src} alt={rr.shots[0].alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
+    </div>
+  </div>
+
+  <section class="wrap row">
+    <h2 class="label">Why</h2>
+    <div class="prose">
+      <p>
+        Every day radio presenters sit down with writers and critics to talk about books, and the recommendations disappear with the
+        episode. Radio Reads keeps them, with a link to the programme so you can hear what was said.
+      </p>
+    </div>
+  </section>
+
+  <section class="wrap row">
+    <h2 class="label">How it works</h2>
+    <div class="steps">
+      {
+        steps.map((s) => (
+          <div>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="wrap figures last-row">
+    <figure>
+      <div class="zoomable fig-panel mauve">
+        <Image src={radioReadsShots.book.src} alt={radioReadsShots.book.alt} widths={[560, 1120, 2400]} sizes="(min-width: 60rem) 32rem, 90vw" />
+      </div>
+      <figcaption class="label">A book and where it was heard</figcaption>
+    </figure>
+    <figure>
+      <div class="zoomable fig-panel mauve">
+        <Image src={radioReadsShots.books.src} alt={radioReadsShots.books.alt} widths={[560, 1120, 2400]} sizes="(min-width: 60rem) 32rem, 90vw" />
+      </div>
+      <figcaption class="label">Every book, searchable</figcaption>
+    </figure>
+    <figure>
+      <div class="zoomable fig-panel mauve">
+        <Image src={radioReadsShots.mobile.src} alt={radioReadsShots.mobile.alt} widths={[390, 780]} sizes="20rem" />
+      </div>
+      <figcaption class="label">On a phone</figcaption>
+    </figure>
+  </section>
+</Case>

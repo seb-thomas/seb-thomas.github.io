@@ -1,16 +1,10 @@
 ---
 import { Image } from 'astro:assets';
-import Base from '../../layouts/Base.astro';
-import Arrow from '../../components/Arrow.astro';
-import Footer from '../../components/Footer.astro';
-import Lightbox from '../../components/Lightbox.astro';
+import Case from '../../layouts/Case.astro';
 import ThemedImage from '../../components/ThemedImage.astro';
 import { projects, linkSdk } from '../../data/site';
-import '../../styles/case.css';
 
-const sdk = projects.find((p) => p.title === 'Link SDK 2.0')!;
-const next = projects.find((p) => p.title === 'Lean Dashboard')!;
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const sdk = projects.find((p) => p.slug === 'link-sdk')!;
 
 const facts = [
   { term: 'Role', value: 'Lead engineer' },
@@ -35,102 +29,67 @@ const steps = [
 ];
 ---
 
-<Base title="Link SDK 2.0 — Sebastian Thomas" description="Rebuilding Lean’s Link SDK, the flow people use to connect their bank and pay inside other apps.">
-  <header class="wrap top">
-    <a class="label" href={`${base}/`}>← Sebastian Thomas</a>
-    <span class="label muted">Lean Technologies · {sdk.year}</span>
-  </header>
+<Case project={sdk} intro="A rebuild of the flow people use to connect their bank and pay inside other apps." facts={facts}>
+  <div class="wrap">
+    <div class="zoomable hero-panel">
+      <ThemedImage src={sdk.shots[0].src} dark={sdk.shots[0].dark} alt={sdk.shots[0].alt} widths={[720, 1440, 1728]} sizes="(min-width: 50rem) 45rem, 90vw" />
+    </div>
+  </div>
 
-  <main>
-    <section class="wrap title">
-      <h1 class="display">Link SDK 2.0</h1>
-      <p>A rebuild of the flow people use to connect their bank and pay inside other apps.</p>
-    </section>
+  <section class="wrap row">
+    <h2 class="label">What it is</h2>
+    <div class="prose">
+      <p>
+        When someone links their bank account or pays inside an app that uses Lean, this is the window that opens. It talks to many
+        different banks, each with its own way of checking it’s really you.
+      </p>
+      <p class="soft">
+        I built the first version in 2020. In 2025 we redesigned the screens, added dark mode and better layouts for small screens, and
+        rebuilt what was underneath.
+      </p>
+    </div>
+  </section>
 
-    <dl class="wrap facts">
+  <section class="wrap row">
+    <h2 class="label">How we built it</h2>
+    <div class="steps">
       {
-        facts.map((f) => (
+        steps.map((s) => (
           <div>
-            <dt class="label">{f.term}</dt>
-            <dd>{f.value}</dd>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
           </div>
         ))
       }
-    </dl>
+    </div>
+  </section>
 
-    <div class="wrap">
-      <div class="zoomable hero-panel">
-        <ThemedImage src={sdk.shots[0].src} dark={sdk.shots[0].dark} alt={sdk.shots[0].alt} widths={[720, 1440, 1728]} sizes="(min-width: 50rem) 45rem, 90vw" />
+  <section class="wrap figures">
+    <figure>
+      <div class="zoomable fig-panel sage">
+        <Image src={linkSdk.storybook.src} alt={linkSdk.storybook.alt} widths={[560, 1120, 2400]} sizes="(min-width: 60rem) 32rem, 90vw" />
+      </div>
+      <figcaption class="label">The ADCB bank screen in Storybook</figcaption>
+    </figure>
+    <figure>
+      <div class="zoomable fig-panel mauve phones">
+        {linkSdk.phones.map((s) => <ThemedImage src={s.src} dark={s.dark} alt={s.alt} widths={[200, 400, 780]} sizes="10rem" />)}
+      </div>
+      <figcaption class="label">Pick a bank, enter a code, confirm</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap row last-row">
+    <h2 class="label">What changed</h2>
+    <div class="numbers">
+      <div>
+        <div class="num">+15%</div>
+        <p>More people finished connecting their bank</p>
+      </div>
+      <div>
+        <div class="num">75→89%</div>
+        <p>Payments that went through</p>
       </div>
     </div>
-
-    <section class="wrap row">
-      <h2 class="label">What it is</h2>
-      <div class="prose">
-        <p>
-          When someone links their bank account or pays inside an app that uses Lean, this is the window that opens. It talks to many
-          different banks, each with its own way of checking it’s really you.
-        </p>
-        <p class="soft">
-          I built the first version in 2020. In 2025 we redesigned the screens, added dark mode and better layouts for small screens, and
-          rebuilt what was underneath.
-        </p>
-      </div>
-    </section>
-
-    <section class="wrap row">
-      <h2 class="label">How we built it</h2>
-      <div class="steps">
-        {
-          steps.map((s) => (
-            <div>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
-            </div>
-          ))
-        }
-      </div>
-    </section>
-
-    <section class="wrap figures">
-      <figure>
-        <div class="zoomable fig-panel sage">
-          <Image src={linkSdk.storybook.src} alt={linkSdk.storybook.alt} widths={[560, 1120, 2400]} sizes="(min-width: 60rem) 32rem, 90vw" />
-        </div>
-        <figcaption class="label">The ADCB bank screen in Storybook</figcaption>
-      </figure>
-      <figure>
-        <div class="zoomable fig-panel mauve phones">
-          {linkSdk.phones.map((s) => <ThemedImage src={s.src} dark={s.dark} alt={s.alt} widths={[200, 400, 780]} sizes="10rem" />)}
-        </div>
-        <figcaption class="label">Pick a bank, enter a code, confirm</figcaption>
-      </figure>
-    </section>
-
-    <section class="wrap row last-row">
-      <h2 class="label">What changed</h2>
-      <div class="numbers">
-        <div>
-          <div class="num">+15%</div>
-          <p>More people finished connecting their bank</p>
-        </div>
-        <div>
-          <div class="num">75→89%</div>
-          <p>Payments that went through</p>
-        </div>
-      </div>
-    </section>
-
-    <a class="next" href={next.href}>
-      <div class="wrap next-inner">
-        <div>
-          <p class="label">Next</p>
-          <span class="display">{next.title}</span>
-        </div>
-        <span class="next-box"><Arrow size={52} strokeWidth={1.2} /></span>
-      </div>
-    </a>
-  </main>
-  <Footer />
-  <Lightbox />
-</Base>
+  </section>
+</Case>

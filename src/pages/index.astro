@@ -13,6 +13,9 @@ const tiles = [
   { href: '#contact', label: 'Contact', note: 'Say hello' },
 ];
 
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const pageOf = (p: (typeof projects)[number]) => `${base}/work/${p.slug}/`;
+
 const features = projects.filter((p) => p.size === 'feature');
 const smalls = projects.filter((p) => p.size === 'small');
 ---
@@ -59,7 +62,7 @@ const smalls = projects.filter((p) => p.size === 'small');
       {
         features.map((p) => (
           <article class="project feature">
-            <a class:list={['panel', p.layout]} href={p.href} style={`background: ${p.panel}`} aria-label={p.title}>
+            <a class:list={['panel', p.layout]} href={pageOf(p)} style={`background: ${p.panel}`} aria-label={p.title}>
               {p.layout === 'dialog-and-phones' && (
                 <>
                   <ThemedImage class="dialog" src={p.shots[0].src} dark={p.shots[0].dark} alt={p.shots[0].alt} widths={[520, 1040]} sizes="(min-width: 60rem) 32.5rem, 80vw" />
@@ -80,7 +83,7 @@ const smalls = projects.filter((p) => p.size === 'small');
               )}
             </a>
             <div class="head">
-              <h3>{p.href ? <a href={p.href}>{p.title}</a> : p.title}</h3>
+              <h3><a href={pageOf(p)}>{p.title}</a></h3>
               <span class="arrow-mark">
                 <Arrow size={32} />
               </span>
@@ -98,21 +101,13 @@ const smalls = projects.filter((p) => p.size === 'small');
 
       <div class="smalls">
         {
-          smalls.map((p) => {
-            const shot = <Image src={p.shots[0].src} alt={p.shots[0].alt} widths={[560, 1120]} sizes="(min-width: 60rem) 32rem, 90vw" />;
-            return (
+          smalls.map((p) => (
               <article class="project small">
-                {p.href ? (
-                  <a class="panel" href={p.href} style={`background: ${p.panel}`} aria-label={p.title}>
-                    {shot}
-                  </a>
-                ) : (
-                  <div class="panel" style={`background: ${p.panel}`}>
-                    {shot}
-                  </div>
-                )}
+                <a class="panel" href={pageOf(p)} style={`background: ${p.panel}`} aria-label={p.title}>
+                  <Image src={p.shots[0].src} alt={p.shots[0].alt} widths={[560, 1120]} sizes="(min-width: 60rem) 32rem, 90vw" />
+                </a>
                 <div class="head">
-                  <h3>{p.href ? <a href={p.href}>{p.title}</a> : p.title}</h3>
+                  <h3><a href={pageOf(p)}>{p.title}</a></h3>
                   <span class="arrow-mark">
                     <Arrow size={28} />
                   </span>
@@ -124,14 +119,8 @@ const smalls = projects.filter((p) => p.size === 'small');
                     {p.role} · {p.year}
                   </span>
                 </div>
-                {p.repo && (
-                  <p class="repo label">
-                    <a href={p.repo}>Source on GitHub ↗</a>
-                  </p>
-                )}
               </article>
-            );
-          })
+          ))
         }
       </div>
     </section>
@@ -576,10 +565,6 @@ const smalls = projects.filter((p) => p.size === 'small');
 
   .meta .role {
     color: var(--accent);
-  }
-
-  .repo {
-    margin-top: 0.75rem;
   }
 
   /* About */

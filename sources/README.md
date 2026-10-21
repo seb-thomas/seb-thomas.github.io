@@ -53,7 +53,7 @@ Captured in the Storybook UI with Playwright at 1440×1060, deviceScaleFactor 2 
 | --- | --- | --- |
 | Claude artifact "Flag Lifecycle Audit" | https://claude.ai/artifact/5weFQpjdZyyWemZY4grhsP | Internal: shared with the Lean org only. Built in the Claude Code chat "Feature flag audit". |
 
-Screenshots were taken by hand (2026-09-22) and supplied as a zip. They are stored in `flag-audit/` and listed in `manifest.json` with their original filenames.
+Screenshots were taken by hand (2026-09-22) and supplied as a zip. `src/assets/projects/flag-most-wanted.png` is `05-most-wanted.png` cropped to the poster, with the username ticker and real names blurred. They are stored in `flag-audit/` and listed in `manifest.json` with their original filenames.
 
 ## Radio Reads
 
@@ -61,3 +61,5 @@ Screenshots were taken by hand (2026-09-22) and supplied as a zip. They are stor
 | --- | --- |
 | Live site | https://radioreads.fun/ |
 | Repo | https://github.com/seb-thomas/scaling-engine |
+
+Radio Reads screenshots in `radio-reads/` (book page, all books, show page, phone home) were captured from https://radioreads.fun/ with Playwright at deviceScaleFactor 2 on 2026-10-21.

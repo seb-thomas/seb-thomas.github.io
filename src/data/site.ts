@@ -16,6 +16,17 @@ import flagDark from '../../sources/flag-audit/dark-mode.png';
 import dashPayments from '../../sources/dashboard/test/desktop/light/payments-date-range.png';
 import dashPalette from '../../sources/dashboard/test/desktop/light/customers-search-palette.png';
 import dashCustomer from '../../sources/dashboard/test/desktop/light/customers-detail.png';
+import dashHome from '../../sources/dashboard/test/desktop/light/home-overview.png';
+import dashPaymentDetail from '../../sources/dashboard/test/desktop/light/payments-detail.png';
+import dashLogs from '../../sources/dashboard/test/desktop/light/logs-list.png';
+import dashWebhooks from '../../sources/dashboard/test/desktop/light/webhooks-list.png';
+import dashBanks from '../../sources/dashboard/test/desktop/light/bank-connections-default.png';
+import dashSdkCustom from '../../sources/dashboard/test/desktop/light/sdk-customization-default.png';
+import dashWorkspaces from '../../sources/dashboard/live/desktop/light/customers-workspace-menu.png';
+import flagMostWanted from '../assets/projects/flag-most-wanted.png';
+import rrBook from '../../sources/radio-reads/book-detail.png';
+import rrBooks from '../../sources/radio-reads/books.png';
+import rrMobile from '../../sources/radio-reads/mobile-home.png';
 
 export const site = {
   firstName: 'Sebastian',
@@ -48,8 +59,10 @@ export interface Project {
   /** How the screenshots are arranged in the panel. */
   layout: 'dialog-and-phones' | 'main-and-side' | 'single';
   shots: Shot[];
-  href?: string;
-  repo?: string;
+  /** The project's page lives at /work/<slug>/. */
+  slug: string;
+  /** External links shown on the project page. */
+  links?: { label: string; href: string }[];
 }
 
 export const projects: Project[] = [
@@ -63,7 +76,7 @@ export const projects: Project[] = [
     panel: 'var(--panel-sdk)',
     size: 'feature',
     layout: 'dialog-and-phones',
-    href: '/work/link-sdk/',
+    slug: 'link-sdk',
     shots: [
       { src: sdkDialog, dark: sdkDialogDark, alt: 'Link SDK “Let’s connect your account” dialog on desktop' },
       { src: sdkOtp, dark: sdkOtpDark, alt: 'Mobile: enter the one-time passcode' },
@@ -80,7 +93,8 @@ export const projects: Project[] = [
     panel: 'var(--panel-sage)',
     size: 'feature',
     layout: 'main-and-side',
-    href: 'https://dashboard.leantech.me/',
+    slug: 'lean-dashboard',
+    links: [{ label: 'Lean Dashboard', href: 'https://dashboard.leantech.me/' }],
     shots: [
       { src: dashPayments, alt: 'Payments page with volume charts and the date range picker open' },
       { src: dashPalette, alt: '⌘K search palette open over the customers page' },
@@ -97,8 +111,11 @@ export const projects: Project[] = [
     panel: 'var(--panel-mauve)',
     size: 'small',
     layout: 'single',
-    href: 'https://radioreads.fun/',
-    repo: 'https://github.com/seb-thomas/scaling-engine',
+    slug: 'radio-reads',
+    links: [
+      { label: 'radioreads.fun', href: 'https://radioreads.fun/' },
+      { label: 'Source on GitHub', href: 'https://github.com/seb-thomas/scaling-engine' },
+    ],
     shots: [{ src: radioReads, alt: 'Radio Reads homepage showing this week’s books on air' }],
   },
   {
@@ -111,7 +128,7 @@ export const projects: Project[] = [
     panel: 'var(--panel-lime)',
     size: 'small',
     layout: 'single',
-    href: '/work/flag-audit/',
+    slug: 'flag-audit',
     shots: [{ src: flagOverview, alt: 'Flag audit overview: 188 flags sorted into cleanup, review and active' }],
   },
 ];
@@ -150,4 +167,24 @@ export const flagAudit = {
   verdict: { src: flagVerdict, alt: 'Verdict card: safe to archive, with the evidence behind it' } as Shot,
   mobile: { src: flagMobile, alt: 'Flag audit overview on a phone' } as Shot,
   dark: { src: flagDark, alt: 'Flag audit overview in dark mode' } as Shot,
+  mostWanted: { src: flagMostWanted, alt: 'The hidden Most Wanted mode: cartoon outlaws for the people with the most abandoned flags, real names blurred' } as Shot,
+};
+
+/** Screenshots for the Lean Dashboard page, each with a short caption. */
+export const leanDashboard: (Shot & { caption: string })[] = [
+  { src: dashHome, alt: 'Dashboard home overview', caption: 'Home' },
+  { src: dashPaymentDetail, alt: 'Payment details drawer', caption: 'A payment, in detail' },
+  { src: dashPalette, alt: '⌘K search palette open over the customers page', caption: 'Search from anywhere with ⌘K' },
+  { src: dashCustomer, alt: 'Customer details drawer open beside the customers table', caption: 'A customer and their accounts' },
+  { src: dashLogs, alt: 'API logs with request charts and status table', caption: 'API logs' },
+  { src: dashWebhooks, alt: 'Webhooks list', caption: 'Webhooks' },
+  { src: dashBanks, alt: 'Bank connections settings with per-bank toggles', caption: 'Choosing which banks to offer' },
+  { src: dashSdkCustom, alt: 'Link SDK customisation settings', caption: 'Theming the Link SDK' },
+  { src: dashWorkspaces, alt: 'Workspace menu for switching between Test, Pre-live and Live', caption: 'Test, Pre-live and Live workspaces' },
+];
+
+export const radioReadsShots = {
+  book: { src: rrBook, alt: 'A book page: Vigil by George Saunders, with the programmes it was featured on' } as Shot,
+  books: { src: rrBooks, alt: 'All books, searchable, newest first' } as Shot,
+  mobile: { src: rrMobile, alt: 'Radio Reads home page on a phone' } as Shot,
 };

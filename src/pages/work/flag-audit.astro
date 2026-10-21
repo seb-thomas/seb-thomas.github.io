@@ -1,15 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-import Base from '../../layouts/Base.astro';
-import Arrow from '../../components/Arrow.astro';
-import Footer from '../../components/Footer.astro';
-import Lightbox from '../../components/Lightbox.astro';
+import Case from '../../layouts/Case.astro';
 import { projects, flagAudit } from '../../data/site';
-import '../../styles/case.css';
 
-const flags = projects.find((p) => p.title === 'Feature flag audit')!;
-const next = projects.find((p) => p.title === 'Link SDK 2.0')!;
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const flags = projects.find((p) => p.slug === 'flag-audit')!;
 
 const facts = [
   { term: 'Made with', value: 'Claude Code' },
@@ -34,100 +28,85 @@ const steps = [
 ];
 ---
 
-<Base title="Feature flag audit — Sebastian Thomas" description="A small tool I vibe-coded with Claude Code to find dead GrowthBook flags across Lean’s repos.">
-  <header class="wrap top">
-    <a class="label" href={`${base}/`}>← Sebastian Thomas</a>
-    <span class="label muted">Lean Technologies · {flags.year}</span>
-  </header>
+<Case project={flags} intro="A small tool I vibe-coded to find the feature flags we’d forgotten about, and help get rid of them." facts={facts}>
+  <div class="wrap">
+    <div class="zoomable hero-panel full" style={`background: ${flags.panel}`}>
+      <Image src={flags.shots[0].src} alt={flags.shots[0].alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
+    </div>
+  </div>
 
-  <main>
-    <section class="wrap title">
-      <h1 class="display">Feature flag audit</h1>
-      <p>A small tool I vibe-coded to find the feature flags we’d forgotten about, and help get rid of them.</p>
-    </section>
+  <section class="wrap row">
+    <h2 class="label">What it is</h2>
+    <div class="prose">
+      <p>
+        Feature flags are great for shipping safely, but they pile up. This checks all 188 of Lean’s GrowthBook flags to find the ones
+        that are safe to remove.
+      </p>
+      <p class="soft">
+        I vibe-coded it with Claude Code. It’s an internal tool rather than a product, but it’s a good example of how I use AI for the
+        jobs that are too tedious to do by hand.
+      </p>
+    </div>
+  </section>
 
-    <dl class="wrap facts">
+  <section class="wrap row">
+    <h2 class="label">How it works</h2>
+    <div class="steps">
       {
-        facts.map((f) => (
+        steps.map((s) => (
           <div>
-            <dt class="label">{f.term}</dt>
-            <dd>{f.value}</dd>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
           </div>
         ))
       }
-    </dl>
-
-    <div class="wrap">
-      <div class="zoomable hero-panel full" style={`background: ${flags.panel}`}>
-        <Image src={flags.shots[0].src} alt={flags.shots[0].alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
-      </div>
     </div>
+  </section>
 
-    <section class="wrap row">
-      <h2 class="label">What it is</h2>
-      <div class="prose">
-        <p>
-          Feature flags are great for shipping safely, but they pile up. This checks all 188 of Lean’s GrowthBook flags to find the
-          ones that are safe to remove.
-        </p>
-        <p class="soft">
-          I vibe-coded it with Claude Code. It’s an internal tool rather than a product, but it’s a good example of how I use AI for the
-          jobs that are too tedious to do by hand.
-        </p>
+  <section class="wrap figures">
+    <figure class="wide">
+      <div class="zoomable fig-panel sage">
+        <Image src={flagAudit.bulk.src} alt={flagAudit.bulk.alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
       </div>
-    </section>
-
-    <section class="wrap row">
-      <h2 class="label">How it works</h2>
-      <div class="steps">
-        {
-          steps.map((s) => (
-            <div>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
-            </div>
-          ))
-        }
+      <figcaption class="label">Bulk actions for the selected flags</figcaption>
+    </figure>
+    <figure>
+      <div class="zoomable fig-panel lime">
+        <Image src={flagAudit.verdict.src} alt={flagAudit.verdict.alt} widths={[280, 560]} sizes="20rem" />
       </div>
-    </section>
-
-    <section class="wrap figures last-row">
-      <figure class="wide">
-        <div class="zoomable fig-panel sage">
-          <Image src={flagAudit.bulk.src} alt={flagAudit.bulk.alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
-        </div>
-        <figcaption class="label">Bulk actions for the selected flags</figcaption>
-      </figure>
-      <figure>
-        <div class="zoomable fig-panel lime">
-          <Image src={flagAudit.verdict.src} alt={flagAudit.verdict.alt} widths={[280, 560]} sizes="20rem" />
-        </div>
-        <figcaption class="label">The verdict on one flag</figcaption>
-      </figure>
-      <figure>
-        <div class="zoomable fig-panel mauve">
-          <Image src={flagAudit.mobile.src} alt={flagAudit.mobile.alt} widths={[390, 780]} sizes="20rem" />
-        </div>
-        <figcaption class="label">It works on a phone too</figcaption>
-      </figure>
-      <figure class="wide">
-        <div class="zoomable fig-panel blue">
-          <Image src={flagAudit.dark.src} alt={flagAudit.dark.alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
-        </div>
-        <figcaption class="label">And in dark mode</figcaption>
-      </figure>
-    </section>
-
-    <a class="next" href={next.href}>
-      <div class="wrap next-inner">
-        <div>
-          <p class="label">Next</p>
-          <span class="display">{next.title}</span>
-        </div>
-        <span class="next-box"><Arrow size={52} strokeWidth={1.2} /></span>
+      <figcaption class="label">The verdict on one flag</figcaption>
+    </figure>
+    <figure>
+      <div class="zoomable fig-panel mauve">
+        <Image src={flagAudit.mobile.src} alt={flagAudit.mobile.alt} widths={[390, 780]} sizes="20rem" />
       </div>
-    </a>
-  </main>
-  <Footer />
-  <Lightbox />
-</Base>
+      <figcaption class="label">It works on a phone too</figcaption>
+    </figure>
+    <figure class="wide">
+      <div class="zoomable fig-panel blue">
+        <Image src={flagAudit.dark.src} alt={flagAudit.dark.alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
+      </div>
+      <figcaption class="label">And in dark mode</figcaption>
+    </figure>
+  </section>
+
+  <section class="wrap row">
+    <h2 class="label">The Easter egg</h2>
+    <div class="prose">
+      <p>
+        Hidden inside is a Most Wanted mode: a poster of cartoon outlaws for the people who left the most flags behind, each with a
+        nickname and their “counts of flag abandonment”.
+      </p>
+      <p class="soft">Real names are blurred here.</p>
+    </div>
+  </section>
+
+  <section class="wrap figures last-row">
+    <figure class="wide">
+      <div class="zoomable fig-panel sage">
+        <Image src={flagAudit.mostWanted.src} alt={flagAudit.mostWanted.alt} widths={[800, 1600, 2656]} sizes="(min-width: 80rem) 72rem, 90vw" />
+      </div>
+      <figcaption class="label">Most Wanted</figcaption>
+    </figure>
+  </section>
+</Case>
