@@ -20,8 +20,9 @@ const features = projects.filter((p) => p.size === 'feature');
 const smalls = projects.filter((p) => p.size === 'small');
 ---
 
-<Base title={`${site.firstName} ${site.lastName} — ${site.title}`}>
+<Base title={`${site.firstName} ${site.lastName} · ${site.title}`}>
   <main>
+    <div class="first-screen">
     <section class="hero wrap">
       <div class="lockup">
         <h1 class="first">{site.firstName.toUpperCase()}</h1>
@@ -47,10 +48,12 @@ const smalls = projects.filter((p) => p.size === 'small');
     <section class="intro wrap">
       <p class="lead">{site.intro}</p>
       <p class="note">{site.introNote}</p>
-      <ul class="roles" aria-label="What I do">
-        {site.roles.map((r) => <li>{r}</li>)}
-      </ul>
     </section>
+    </div>
+
+    <ul class="roles wrap" aria-label="What I do">
+      {site.roles.map((r) => <li>{r}</li>)}
+    </ul>
 
     <section id="work" class="work wrap" aria-labelledby="work-h">
       <p class="label">Work</p>
@@ -200,14 +203,27 @@ const smalls = projects.filter((p) => p.size === 'small');
 </script>
 
 <style>
-  /* Hero: name lockup around the four section tiles */
-  /* --t is one tile's side. It shrinks with the viewport height too, so the
-     lockup and the two intro paragraphs fit on the first screen. */
+  /* The lockup and the two intro paragraphs fill the first screen exactly;
+     the roles strip starts below the fold. */
+  .first-screen {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: clamp(1.5rem, 5svh, 3.5rem);
+  }
+
+  .first-screen > .intro {
+    width: 100%;
+  }
+
+  /* Hero: name lockup around the four section tiles. --t is one tile's side;
+     it shrinks with the viewport height too, so everything above fits. */
   .hero {
-    --t: clamp(120px, min(20vw, (100svh - 19rem) / 2.6), 230px);
+    --t: clamp(120px, min(20vw, (100svh - 22rem) / 2.6), 230px);
     display: flex;
     justify-content: center;
-    padding-block: clamp(1.5rem, 6svh, 4rem) clamp(1.5rem, 4svh, 2.5rem);
+    padding-bottom: clamp(2.5rem, 8svh, 5rem);
   }
 
   .lockup {
@@ -328,7 +344,7 @@ const smalls = projects.filter((p) => p.size === 'small');
   @media (max-width: 40rem) {
     .hero {
       display: block;
-      padding-block: 1.5rem;
+      padding-bottom: clamp(2rem, 5svh, 3rem);
     }
 
     .lockup {
@@ -387,10 +403,6 @@ const smalls = projects.filter((p) => p.size === 'small');
   }
 
   /* Intro */
-  .intro {
-    padding-bottom: 1rem;
-  }
-
   .lead {
     margin: 0;
     max-width: 52rem;
@@ -400,7 +412,7 @@ const smalls = projects.filter((p) => p.size === 'small');
   }
 
   .note {
-    margin: 1rem 0 3rem;
+    margin: 1rem 0 0;
     max-width: 52rem;
     font-size: 1.0625rem;
     color: var(--muted);
@@ -412,7 +424,6 @@ const smalls = projects.filter((p) => p.size === 'small');
     padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
-    border-top: 1px solid var(--line);
     font-size: 0.875rem;
   }
 
@@ -421,6 +432,7 @@ const smalls = projects.filter((p) => p.size === 'small');
     align-items: center;
     gap: 0.75rem;
     padding-block: 1rem;
+    border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
   }
 

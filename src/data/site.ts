@@ -35,7 +35,7 @@ export const site = {
   email: 'sebastianjthomas@gmail.com',
   intro:
     'I’m an engineering manager in London. For the last six years I’ve been at Lean Technologies, working on the SDK and dashboard people use to connect their bank and pay across MENA.',
-  introNote: 'This is where I put things I’m working on — some from my day job, some just ideas I wanted to try.',
+  introNote: 'This is where I put things I’m working on: some from my day job, some just ideas I wanted to try.',
   roles: ['Web developer', 'Engineering leader', 'Interaction design'],
   links: [
     { label: 'GitHub', href: 'https://github.com/seb-thomas' },
@@ -137,7 +137,7 @@ export const about = {
   heading: 'Fifteen years of building for the web.',
   paragraphs: [
     'I studied interaction design, then spent about ten years as a frontend developer for agencies and clients like Adidas, Square Enix and the Home Office.',
-    'I joined Lean in 2020 to build its first JavaScript SDK. Now I manage the team behind its customer platform and SDKs, and still write code. Lately I’m curious about how AI changes who gets to build interfaces — and I’m designing more than I used to.',
+    'I joined Lean in 2020 to build its first JavaScript SDK. Now I manage the team behind its customer platform and SDKs, and still write code. Lately I’m curious about how AI changes who gets to build interfaces, and I’m designing more than I used to.',
   ],
   focus: [
     { title: 'Frontend architecture', text: 'React, TypeScript, React Query, design systems and component libraries in Storybook.' },
