@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Arrow from '../../components/Arrow.astro';
 import Footer from '../../components/Footer.astro';
+import ThemedImage from '../../components/ThemedImage.astro';
 import { projects, linkSdk } from '../../data/site';
 import '../../styles/case.css';
 
@@ -58,7 +59,7 @@ const steps = [
 
     <div class="wrap">
       <div class="hero-panel">
-        <Image src={sdk.shots[0].src} alt={sdk.shots[0].alt} widths={[640, 1280]} sizes="(min-width: 45rem) 40rem, 90vw" />
+        <ThemedImage src={sdk.shots[0].src} dark={sdk.shots[0].dark} alt={sdk.shots[0].alt} widths={[720, 1440]} sizes="(min-width: 50rem) 45rem, 90vw" />
       </div>
     </div>
 
@@ -99,7 +100,7 @@ const steps = [
       </figure>
       <figure>
         <div class="fig-panel mauve phones">
-          {linkSdk.phones.map((s) => <Image src={s.src} alt={s.alt} widths={[200, 400]} sizes="10rem" />)}
+          {linkSdk.phones.map((s) => <ThemedImage src={s.src} dark={s.dark} alt={s.alt} widths={[200, 400]} sizes="10rem" />)}
         </div>
         <figcaption class="label">Pick a bank, enter a code, confirm</figcaption>
       </figure>

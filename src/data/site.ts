@@ -1,8 +1,11 @@
 import type { ImageMetadata } from 'astro';
 import radioReads from '../assets/projects/radio-reads.png';
 import sdkDialog from '../assets/projects/link-sdk-dialog.png';
+import sdkDialogDark from '../assets/projects/link-sdk-dialog-dark.png';
 import sdkSelectBank from '../../sources/link-sdk-v2/figma/mobile/light/connect-select-bank.png';
 import sdkOtp from '../../sources/link-sdk-v2/figma/mobile/light/connect-mfa-otp.png';
+import sdkOtpDark from '../../sources/link-sdk-v2/figma/mobile/dark/connect-mfa-otp.png';
+import sdkSelectBankDark from '../../sources/link-sdk-v2/figma/mobile/dark/connect-select-bank.png';
 import sdkPayDark from '../../sources/link-sdk-v2/figma/mobile/dark/pay-confirm.png';
 import sdkStoryView from '../../sources/storybook/bank-priming-adcb.png';
 import flagOverview from '../../sources/flag-audit/overview.png';
@@ -29,7 +32,8 @@ export const site = {
   ],
 };
 
-type Shot = { src: ImageMetadata; alt: string };
+/** `dark` is an optional version shown when the visitor's system is in dark mode. */
+type Shot = { src: ImageMetadata; alt: string; dark?: ImageMetadata };
 
 export interface Project {
   title: string;
@@ -61,8 +65,8 @@ export const projects: Project[] = [
     layout: 'dialog-and-phones',
     href: '/work/link-sdk/',
     shots: [
-      { src: sdkDialog, alt: 'Link SDK “Let’s connect your account” dialog on desktop' },
-      { src: sdkOtp, alt: 'Mobile: enter the one-time passcode' },
+      { src: sdkDialog, dark: sdkDialogDark, alt: 'Link SDK “Let’s connect your account” dialog on desktop' },
+      { src: sdkOtp, dark: sdkOtpDark, alt: 'Mobile: enter the one-time passcode' },
       { src: sdkPayDark, alt: 'Mobile: confirm payment in dark mode' },
     ],
   },
@@ -135,8 +139,8 @@ export const approach = [
 export const linkSdk = {
   storybook: { src: sdkStoryView, alt: 'Storybook showing the ADCB bank priming view with its controls' } as Shot,
   phones: [
-    { src: sdkSelectBank, alt: 'Mobile: select your bank' },
-    { src: sdkOtp, alt: 'Mobile: enter the one-time passcode' },
+    { src: sdkSelectBank, dark: sdkSelectBankDark, alt: 'Mobile: select your bank' },
+    { src: sdkOtp, dark: sdkOtpDark, alt: 'Mobile: enter the one-time passcode' },
     { src: sdkPayDark, alt: 'Mobile: confirm payment in dark mode' },
   ] as Shot[],
 };

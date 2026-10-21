@@ -1,0 +1,30 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+
+// An image with an optional dark-mode version, swapped in with
+// prefers-color-scheme. Without `dark` it renders a plain optimised <img>.
+interface Props {
+  src: ImageMetadata;
+  dark?: ImageMetadata;
+  alt: string;
+  widths: number[];
+  sizes: string;
+  class?: string;
+}
+
+const { src, dark, alt, widths, sizes, class: className } = Astro.props;
+const light = await getImage({ src, widths, sizes });
+const night = dark && (await getImage({ src: dark, widths, sizes }));
+---
+
+<picture class:list={['themed', className]}>
+  {night && <source media="(prefers-color-scheme: dark)" srcset={night.srcSet.attribute} sizes={sizes} />}
+  <img src={light.src} srcset={light.srcSet.attribute} sizes={sizes} alt={alt} width={src.width} height={src.height} loading="lazy" decoding="async" />
+</picture>
+
+<style>
+  .themed {
+    display: block;
+  }
+</style>

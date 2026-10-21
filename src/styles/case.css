@@ -178,9 +178,14 @@ figure {
   background: var(--panel-mauve);
 }
 
-.phones img {
+.phones picture {
   flex: 1 1 0;
   min-width: 0;
+  height: 100%;
+}
+
+.phones img {
+  width: 100%;
   height: 100%;
   object-fit: contain;
   border-radius: 10px;
