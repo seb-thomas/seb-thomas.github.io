@@ -180,7 +180,27 @@ const smalls = projects.filter((p) => p.size === 'small');
     </section>
   </main>
   <Footer />
+  <p class="toast" role="status" aria-live="polite"></p>
 </Base>
+
+<script>
+  // mailto: does nothing in browsers without a mail app set up, so clicking an
+  // email link also copies the address and says so.
+  const toast = document.querySelector<HTMLElement>('.toast')!;
+  let timer: number | undefined;
+
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="mailto:"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const email = link.href.replace('mailto:', '');
+      navigator.clipboard?.writeText(email).then(() => {
+        toast.textContent = `Copied ${email}`;
+        toast.classList.add('show');
+        clearTimeout(timer);
+        timer = window.setTimeout(() => toast.classList.remove('show'), 2500);
+      });
+    });
+  });
+</script>
 
 <style>
   /* Hero: name lockup around the four section tiles */
@@ -731,6 +751,30 @@ const smalls = projects.filter((p) => p.size === 'small');
   .contact-box:hover {
     color: #fff;
     opacity: 0.92;
+  }
+
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 1.5rem;
+    margin: 0;
+    padding: 0.625rem 1rem;
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    transform: translate(-50%, 1rem);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 160ms ease-out,
+      transform 160ms ease-out;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 
   .contact-box :global(svg) {
