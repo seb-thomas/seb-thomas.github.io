@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Arrow from '../../components/Arrow.astro';
 import Footer from '../../components/Footer.astro';
+import Lightbox from '../../components/Lightbox.astro';
 import ThemedImage from '../../components/ThemedImage.astro';
 import { projects, linkSdk } from '../../data/site';
 import '../../styles/case.css';
@@ -58,8 +59,8 @@ const steps = [
     </dl>
 
     <div class="wrap">
-      <div class="hero-panel">
-        <ThemedImage src={sdk.shots[0].src} dark={sdk.shots[0].dark} alt={sdk.shots[0].alt} widths={[720, 1440]} sizes="(min-width: 50rem) 45rem, 90vw" />
+      <div class="zoomable hero-panel">
+        <ThemedImage src={sdk.shots[0].src} dark={sdk.shots[0].dark} alt={sdk.shots[0].alt} widths={[720, 1440, 1728]} sizes="(min-width: 50rem) 45rem, 90vw" />
       </div>
     </div>
 
@@ -93,14 +94,14 @@ const steps = [
 
     <section class="wrap figures">
       <figure>
-        <div class="fig-panel sage">
-          <Image src={linkSdk.storybook.src} alt={linkSdk.storybook.alt} widths={[560, 1120]} sizes="(min-width: 60rem) 32rem, 90vw" />
+        <div class="zoomable fig-panel sage">
+          <Image src={linkSdk.storybook.src} alt={linkSdk.storybook.alt} widths={[560, 1120, 2400]} sizes="(min-width: 60rem) 32rem, 90vw" />
         </div>
         <figcaption class="label">The ADCB bank screen in Storybook</figcaption>
       </figure>
       <figure>
-        <div class="fig-panel mauve phones">
-          {linkSdk.phones.map((s) => <ThemedImage src={s.src} dark={s.dark} alt={s.alt} widths={[200, 400]} sizes="10rem" />)}
+        <div class="zoomable fig-panel mauve phones">
+          {linkSdk.phones.map((s) => <ThemedImage src={s.src} dark={s.dark} alt={s.alt} widths={[200, 400, 780]} sizes="10rem" />)}
         </div>
         <figcaption class="label">Pick a bank, enter a code, confirm</figcaption>
       </figure>
@@ -131,4 +132,5 @@ const steps = [
     </a>
   </main>
   <Footer />
+  <Lightbox />
 </Base>

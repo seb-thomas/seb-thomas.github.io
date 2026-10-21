@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import Arrow from '../../components/Arrow.astro';
 import Footer from '../../components/Footer.astro';
+import Lightbox from '../../components/Lightbox.astro';
 import { projects, flagAudit } from '../../data/site';
 import '../../styles/case.css';
 
@@ -57,7 +58,7 @@ const steps = [
     </dl>
 
     <div class="wrap">
-      <div class="hero-panel full" style={`background: ${flags.panel}`}>
+      <div class="zoomable hero-panel full" style={`background: ${flags.panel}`}>
         <Image src={flags.shots[0].src} alt={flags.shots[0].alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
       </div>
     </div>
@@ -92,25 +93,25 @@ const steps = [
 
     <section class="wrap figures last-row">
       <figure class="wide">
-        <div class="fig-panel sage">
+        <div class="zoomable fig-panel sage">
           <Image src={flagAudit.bulk.src} alt={flagAudit.bulk.alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
         </div>
         <figcaption class="label">Bulk actions for the selected flags</figcaption>
       </figure>
       <figure>
-        <div class="fig-panel lime">
+        <div class="zoomable fig-panel lime">
           <Image src={flagAudit.verdict.src} alt={flagAudit.verdict.alt} widths={[280, 560]} sizes="20rem" />
         </div>
         <figcaption class="label">The verdict on one flag</figcaption>
       </figure>
       <figure>
-        <div class="fig-panel mauve">
+        <div class="zoomable fig-panel mauve">
           <Image src={flagAudit.mobile.src} alt={flagAudit.mobile.alt} widths={[390, 780]} sizes="20rem" />
         </div>
         <figcaption class="label">It works on a phone too</figcaption>
       </figure>
       <figure class="wide">
-        <div class="fig-panel blue">
+        <div class="zoomable fig-panel blue">
           <Image src={flagAudit.dark.src} alt={flagAudit.dark.alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
         </div>
         <figcaption class="label">And in dark mode</figcaption>
@@ -128,4 +129,5 @@ const steps = [
     </a>
   </main>
   <Footer />
+  <Lightbox />
 </Base>

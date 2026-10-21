@@ -1,0 +1,69 @@
+---
+// Click (or Enter/Space) on any image inside a `.zoomable` element to see it
+// full size. Click anywhere or press Esc to close.
+---
+
+<dialog class="lightbox" aria-label="Enlarged image"></dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('dialog.lightbox')!;
+
+  function open(img: HTMLImageElement) {
+    // Clone the <picture> so the dark-mode <source> still applies, and ask for
+    // the largest size that fits the screen.
+    const original = img.closest('picture') ?? img;
+    const copy = original.cloneNode(true) as HTMLElement;
+    copy.querySelectorAll('source, img').forEach((el) => el.setAttribute('sizes', '95vw'));
+    copy.querySelector('img')?.removeAttribute('loading');
+    dialog.replaceChildren(copy);
+    dialog.showModal();
+  }
+
+  document.querySelectorAll<HTMLImageElement>('.zoomable img').forEach((img) => {
+    img.tabIndex = 0;
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', `View larger: ${img.alt}`);
+    img.addEventListener('click', () => open(img));
+    img.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        open(img);
+      }
+    });
+  });
+
+  dialog.addEventListener('click', () => dialog.close());
+</script>
+
+<style is:global>
+  .zoomable img {
+    cursor: zoom-in;
+  }
+
+  .zoomable img:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  dialog.lightbox {
+    max-width: 95vw;
+    max-height: 95vh;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-out;
+  }
+
+  dialog.lightbox::backdrop {
+    background: rgb(0 0 0 / 0.85);
+  }
+
+  dialog.lightbox img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+  }
+</style>
