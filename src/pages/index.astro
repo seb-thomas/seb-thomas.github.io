@@ -293,8 +293,8 @@ const smalls = projects.filter((p) => p.size === 'small');
   }
 
   .tile:hover {
-    color: inherit;
-    opacity: 0.92;
+    color: var(--ink);
+    filter: brightness(1.08);
   }
 
   .tile:nth-child(-n + 3):hover {
@@ -442,8 +442,10 @@ const smalls = projects.filter((p) => p.size === 'small');
   }
 
   /* Work */
+  /* Margin rather than padding, so the #work link lands on the heading */
   .work {
-    padding-top: clamp(4.5rem, 9vw, 7rem);
+    margin-top: clamp(4.5rem, 9vw, 7rem);
+    scroll-margin-top: 2rem;
   }
 
   .work-h {

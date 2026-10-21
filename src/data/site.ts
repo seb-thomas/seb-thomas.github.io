@@ -22,7 +22,7 @@ export const site = {
   intro:
     'I’m an engineering manager in London. For the last six years I’ve been at Lean Technologies, working on the SDK and dashboard people use to connect their bank and pay across MENA.',
   introNote: 'This is where I put things I’m working on — some from my day job, some just ideas I wanted to try.',
-  roles: ['Web developer', 'Engineering leader', 'Design-minded'],
+  roles: ['Web developer', 'Engineering leader', 'Interaction design'],
   links: [
     { label: 'GitHub', href: 'https://github.com/seb-thomas' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sebastian-thomas-96583826/' },
