@@ -12,11 +12,9 @@ interface Props {
   project: Project;
   intro: string;
   facts: { term: string; value: string }[];
-  /** Who the work was for, shown top right. */
-  context?: string;
 }
 
-const { project, intro, facts, context = 'Lean Technologies' } = Astro.props;
+const { project, intro, facts } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const next = projects[(projects.indexOf(project) + 1) % projects.length];
 ---
@@ -24,7 +22,6 @@ const next = projects[(projects.indexOf(project) + 1) % projects.length];
 <Base title={`${project.title} — Sebastian Thomas`} description={project.description}>
   <header class="wrap top">
     <a class="label" href={`${base}/`}>← Sebastian Thomas</a>
-    <span class="label muted">{context} · {project.year}</span>
   </header>
 
   <main>
@@ -58,7 +55,6 @@ const next = projects[(projects.indexOf(project) + 1) % projects.length];
     <a class="next" href={`${base}/work/${next.slug}/`}>
       <div class="wrap next-inner">
         <div>
-          <p class="label">Next</p>
           <span class="display">{next.title}</span>
         </div>
         <span class="next-box"><Arrow size={52} strokeWidth={1.2} /></span>
