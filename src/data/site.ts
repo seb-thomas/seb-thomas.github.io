@@ -1,6 +1,16 @@
 import type { ImageMetadata } from 'astro';
 import radioReads from '../assets/projects/radio-reads.png';
 import linkSdk from '../../sources/link-sdk-v2/figma/desktop/light/connect-initial-payments.png';
+import dashPayments from '../../sources/dashboard/test/desktop/light/payments-date-range.png';
+import dashPaymentMenu from '../../sources/dashboard/test/desktop/light/payments-row-menu.png';
+import dashCustomers from '../../sources/dashboard/test/desktop/light/customers-list.png';
+import dashCustomer from '../../sources/dashboard/test/desktop/light/customers-detail.png';
+import dashPalette from '../../sources/dashboard/test/desktop/light/customers-search-palette.png';
+import dashSearch from '../../sources/dashboard/test/desktop/light/search-results.png';
+import dashLogs from '../../sources/dashboard/test/desktop/light/logs-list.png';
+import dashBanks from '../../sources/dashboard/test/desktop/light/bank-connections-default.png';
+import dashAccounts from '../../sources/dashboard/live/desktop/light/your-accounts-list.png';
+import dashWorkspaces from '../../sources/dashboard/live/desktop/light/customers-workspace-menu.png';
 
 export const site = {
   name: 'Seb Thomas',
@@ -21,9 +31,30 @@ export interface Project {
   href?: string;
   repo?: string;
   image?: { src: ImageMetadata; alt: string };
+  gallery?: { src: ImageMetadata; alt: string }[];
 }
 
 export const projects: Project[] = [
+  {
+    title: 'Lean Dashboard',
+    year: '2026',
+    description:
+      'The dashboard Lean’s clients use to run their open banking integration: customers, payments and payouts, account verification, developer tools like logs, webhooks and test users, and bank connections, all reachable from a ⌘K search.',
+    tags: ['Product design', 'Dashboard', 'Data tables', 'Search'],
+    href: 'https://dashboard.leantech.me/',
+    image: { src: dashPayments, alt: 'Payments page with volume charts and the date range picker open' },
+    gallery: [
+      { src: dashCustomers, alt: 'Customers table with pagination' },
+      { src: dashCustomer, alt: 'Customer details drawer open beside the customers table' },
+      { src: dashPalette, alt: '⌘K search palette open over the customers page' },
+      { src: dashSearch, alt: 'Search results for “test” grouped into customers and payments' },
+      { src: dashPaymentMenu, alt: 'Payment row actions menu' },
+      { src: dashLogs, alt: 'API logs with request charts and status table' },
+      { src: dashBanks, alt: 'Bank connections settings with per-bank toggles' },
+      { src: dashAccounts, alt: 'Your accounts page listing connected bank accounts' },
+      { src: dashWorkspaces, alt: 'Workspace menu for switching between Test, Pre-live and Live' },
+    ],
+  },
   {
     title: 'Link SDK 2.0',
     year: '2025',
