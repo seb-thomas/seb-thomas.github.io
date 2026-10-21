@@ -38,6 +38,14 @@ node scripts/capture-dashboard.mjs live
 
 Sessions are saved to `.auth/`, which is gitignored. Logging in to one mode can sign out the other, so capture each mode right after its login. Add `--only=customers-list,payments-detail` to re-shoot specific screens.
 
+## Link SDK Storybook (Lean Technologies)
+
+| Source | URL | Notes |
+| --- | --- | --- |
+| Storybook | https://ui.leantech.me/ | Public, so no login is needed. Two shots in `storybook/`: an SDK view (ADCB bank priming) with its controls, and the Button docs page. Listed in `storybook/manifest.json`. |
+
+Captured in the Storybook UI with Playwright at 1440×1060, deviceScaleFactor 2 (2880×2120). Re-run with `node scripts/capture-storybook.mjs`. To shoot other stories, edit `SHOTS`; story IDs are in https://ui.leantech.me/index.json.
+
 ## Radio Reads
 
 | Source | URL |

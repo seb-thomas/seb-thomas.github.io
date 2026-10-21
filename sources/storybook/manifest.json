@@ -1,0 +1,18 @@
+[
+  {
+    "file": "bank-priming-adcb.png",
+    "url": "https://ui.leantech.me/?path=/story/views-bankpriming--adcb-priming-connect",
+    "slug": "bank-priming-adcb",
+    "storyId": "views-bankpriming--adcb-priming-connect",
+    "width": 2880,
+    "height": 2120
+  },
+  {
+    "file": "button-docs.png",
+    "url": "https://ui.leantech.me/?path=/docs/components-button--docs",
+    "slug": "button-docs",
+    "storyId": "components-button--docs",
+    "width": 2880,
+    "height": 2120
+  }
+]

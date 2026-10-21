@@ -1,6 +1,8 @@
 import type { ImageMetadata } from 'astro';
 import radioReads from '../assets/projects/radio-reads.png';
 import linkSdk from '../../sources/link-sdk-v2/figma/desktop/light/connect-initial-payments.png';
+import sdkStoryView from '../../sources/storybook/bank-priming-adcb.png';
+import sdkStoryDocs from '../../sources/storybook/button-docs.png';
 import dashPayments from '../../sources/dashboard/test/desktop/light/payments-date-range.png';
 import dashPaymentMenu from '../../sources/dashboard/test/desktop/light/payments-row-menu.png';
 import dashCustomers from '../../sources/dashboard/test/desktop/light/customers-list.png';
@@ -63,6 +65,10 @@ export const projects: Project[] = [
     tags: ['TypeScript', 'Radix UI', 'Storybook', 'State machines', 'Feature flags', 'Sentry'],
     href: 'https://www.figma.com/design/eJ6wAodx2x8dCCcYmU46s9/Lean-Link-SDK-2.0--UAE----Community--Community-?node-id=1-21024',
     image: { src: linkSdk, alt: 'Link SDK “Let’s connect your account” screen on desktop' },
+    gallery: [
+      { src: sdkStoryView, alt: 'Storybook showing the ADCB bank priming view with its controls' },
+      { src: sdkStoryDocs, alt: 'Storybook docs page for the Button component with its props table' },
+    ],
   },
   {
     title: 'Radio Reads',
