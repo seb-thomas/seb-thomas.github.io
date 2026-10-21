@@ -1,0 +1,578 @@
+[
+  {
+    "file": "desktop/dark/connect-bank-list-grouped-search-visible.png",
+    "nodeId": "14:5623",
+    "frameName": "bank-list",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/connect-captcha.png",
+    "nodeId": "14:5676",
+    "frameName": "captcha",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/connect-credentials.png",
+    "nodeId": "2015:3862",
+    "frameName": "credentials",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/connect-end-success-coolingoff.png",
+    "nodeId": "14:5717",
+    "frameName": "End/Success-CoolingOff",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/connect-end-success-default.png",
+    "nodeId": "14:5684",
+    "frameName": "End/Success-Default",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/connect-error-correlation-id.png",
+    "nodeId": "14:5699",
+    "frameName": "Error/correlation-id",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/connect-initial-payments.png",
+    "nodeId": "14:5603",
+    "frameName": "initial/payments",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/connect-loader-branded.png",
+    "nodeId": "14:5598",
+    "frameName": "Loader",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/connect-login-approval-stage1.png",
+    "nodeId": "14:5639",
+    "frameName": "login approval-stage1",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/connect-otp.png",
+    "nodeId": "14:5634",
+    "frameName": "otp",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/connect-security-question.png",
+    "nodeId": "14:5668",
+    "frameName": "security-question",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/pay-confirm.png",
+    "nodeId": "14:5400",
+    "frameName": "Pay/Confirm",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/pay-error.png",
+    "nodeId": "14:5452",
+    "frameName": "Pay/Error",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/pay-mfa-otp.png",
+    "nodeId": "14:5433",
+    "frameName": "Pay/MFA-OTP",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/pay-select-account.png",
+    "nodeId": "14:5423",
+    "frameName": "Pay/Select Account",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/dark/pay-success.png",
+    "nodeId": "14:5438",
+    "frameName": "Pay/Sucess",
+    "platform": "desktop",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/connect-bank-list-grouped-search-visible.png",
+    "nodeId": "14:5492",
+    "frameName": "bank-list-grouped/search-visible",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/connect-captcha.png",
+    "nodeId": "14:5545",
+    "frameName": "captcha",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/connect-credentials.png",
+    "nodeId": "14:5498",
+    "frameName": "credentials",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/connect-end-success-coolingoff.png",
+    "nodeId": "14:5586",
+    "frameName": "End/Success-CoolingOff",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/connect-end-success-default.png",
+    "nodeId": "14:5553",
+    "frameName": "End/Success-Default",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/connect-error-correlation-id.png",
+    "nodeId": "14:5568",
+    "frameName": "Error/correlation-id",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/connect-initial-payments.png",
+    "nodeId": "14:5472",
+    "frameName": "initial/payments",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/connect-loader-branded.png",
+    "nodeId": "14:5467",
+    "frameName": "Loader (Branded)",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/connect-login-approval-stage1.png",
+    "nodeId": "14:5508",
+    "frameName": "login approval-stage1",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/connect-otp.png",
+    "nodeId": "14:5503",
+    "frameName": "otp",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/connect-security-question.png",
+    "nodeId": "14:5537",
+    "frameName": "credentials",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/pay-confirm.png",
+    "nodeId": "14:5334",
+    "frameName": "Pay/Confirm",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/pay-error.png",
+    "nodeId": "14:5385",
+    "frameName": "Pay/Error",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/pay-mfa-otp.png",
+    "nodeId": "14:5367",
+    "frameName": "Pay/MFA-OTP",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/pay-select-account.png",
+    "nodeId": "14:5357",
+    "frameName": "Pay/Select Account",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "desktop/light/pay-success.png",
+    "nodeId": "14:5372",
+    "frameName": "Pay/Sucess",
+    "platform": "desktop",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "mobile/dark/connect-credentials.png",
+    "nodeId": "2007:11722",
+    "frameName": "SDKV2/credentials",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 786,
+    "height": 1704
+  },
+  {
+    "file": "mobile/dark/connect-error.png",
+    "nodeId": "14:7949",
+    "frameName": "Connect/Error",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/connect-initial.png",
+    "nodeId": "14:7846",
+    "frameName": "Connect/Initial",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/connect-loading.png",
+    "nodeId": "14:7841",
+    "frameName": "Connect/Loading",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/connect-mfa-captcha.png",
+    "nodeId": "14:7927",
+    "frameName": "Connect/MFA-Captcha",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/connect-mfa-inappauth.png",
+    "nodeId": "14:7883",
+    "frameName": "Connect/MFA-InAppAuth",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/connect-mfa-otp.png",
+    "nodeId": "14:7878",
+    "frameName": "Connect/MFA-OTP",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/connect-mfa-securityquestion.png",
+    "nodeId": "14:7919",
+    "frameName": "Connect/MFA-SecurityQuestion",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/connect-select-bank.png",
+    "nodeId": "14:7866",
+    "frameName": "Connect/Select Bank",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/connect-success-cooling-off-loading.png",
+    "nodeId": "14:7968",
+    "frameName": "loading-indefinite",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/connect-success.png",
+    "nodeId": "14:7935",
+    "frameName": "Connect/Success",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/pay-confirm.png",
+    "nodeId": "14:8042",
+    "frameName": "Pay/Confirm",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/pay-error.png",
+    "nodeId": "14:8078",
+    "frameName": "error-sequence-default",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/pay-mfa-otp.png",
+    "nodeId": "14:8073",
+    "frameName": "Pay/MFA-OTP",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/pay-select-account.png",
+    "nodeId": "14:8063",
+    "frameName": "Pay/Select Account",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/dark/pay-success.png",
+    "nodeId": "14:8091",
+    "frameName": "Pay/Success",
+    "platform": "mobile",
+    "mode": "dark",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/connect-credentials.png",
+    "nodeId": "2007:11616",
+    "frameName": "SDKV2/credentials",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 786,
+    "height": 1704
+  },
+  {
+    "file": "mobile/light/connect-error.png",
+    "nodeId": "14:7811",
+    "frameName": "Connect/Error",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/connect-initial.png",
+    "nodeId": "14:7708",
+    "frameName": "Connect/Initial",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/connect-loading.png",
+    "nodeId": "14:7703",
+    "frameName": "Connect/Loading",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/connect-mfa-captcha.png",
+    "nodeId": "14:7789",
+    "frameName": "Connect/MFA-Captcha",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/connect-mfa-inappauth.png",
+    "nodeId": "14:7745",
+    "frameName": "Connect/MFA-InAppAuth",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/connect-mfa-otp.png",
+    "nodeId": "14:7740",
+    "frameName": "Connect/MFA-OTP",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/connect-mfa-securityquestion.png",
+    "nodeId": "14:7781",
+    "frameName": "Connect/MFA-SecurityQuestion",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/connect-select-bank.png",
+    "nodeId": "14:7728",
+    "frameName": "Connect/Select Bank",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/connect-success-cooling-off-loading.png",
+    "nodeId": "14:7830",
+    "frameName": "loading-indefinite",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/connect-success.png",
+    "nodeId": "14:7797",
+    "frameName": "Connect/Success",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/pay-confirm.png",
+    "nodeId": "14:7979",
+    "frameName": "Pay/Confirm",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/pay-error.png",
+    "nodeId": "14:8015",
+    "frameName": "error-sequence-default",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/pay-mfa-otp.png",
+    "nodeId": "14:8010",
+    "frameName": "Pay/MFA-OTP",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/pay-select-account.png",
+    "nodeId": "14:8000",
+    "frameName": "Pay/Select Account",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  },
+  {
+    "file": "mobile/light/pay-success.png",
+    "nodeId": "14:8028",
+    "frameName": "Pay/Success",
+    "platform": "mobile",
+    "mode": "light",
+    "width": 780,
+    "height": 1688
+  }
+]

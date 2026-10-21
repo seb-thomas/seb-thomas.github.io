@@ -1,5 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import radioReads from '../assets/projects/radio-reads.png';
+import linkSdk from '../../sources/link-sdk-v2/figma/desktop/light/connect-initial-payments.png';
 
 export const site = {
   name: 'Seb Thomas',
@@ -23,6 +24,15 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    title: 'Link SDK 2.0',
+    year: '2025',
+    description:
+      'A redesign of Lean’s Link SDK, the flow people use to connect their bank and make payments inside other apps. Clearer MFA guidance, rewritten copy, dark mode and layouts that adapt from mobile to desktop, rolled out over the air with feature flags.',
+    tags: ['Product design', 'Design system', 'Mobile', 'Dark mode'],
+    href: 'https://www.figma.com/design/eJ6wAodx2x8dCCcYmU46s9/Lean-Link-SDK-2.0--UAE----Community--Community-?node-id=1-21024',
+    image: { src: linkSdk, alt: 'Link SDK “Let’s connect your account” screen on desktop' },
+  },
   {
     title: 'Radio Reads',
     year: '2026',

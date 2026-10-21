@@ -1,0 +1,62 @@
+[
+  {
+    "slide": 1,
+    "file": "slide-01.png",
+    "text": "Lean Technologies © 2025 Private and Confidential\n\nLink SDK 2.0\n\nUAE Update \n\n2025\n\n1 / 12"
+  },
+  {
+    "slide": 2,
+    "file": "slide-02.png",
+    "text": "Lean Technologies © 2025 Private and Confidential\n\nUpdating the Link SDK experience\n\nWe redesigned our Link SDK to enhance the user experience during the connection and payment steps and improve your conversion rates.\n\nBy refining the interface, introducing dark mode, and optimizing for various screen sizes, we strive to deliver a trustworthy and seamless experience for all users, regardless of their device or platform.\n\n2 / 12"
+  },
+  {
+    "slide": 3,
+    "file": "slide-03.png",
+    "text": "Requirements\n\nNo changes to your implementation are needed as the rollout will be delivered Over-The-Air via Feature Flags. If any issues arise, we can quickly disable the update.\n\nLink SDK 2.0 is available only for Link Loader implementations. Please ask your implementations manager for migration resources.\n\nThe new version will be available to a percentage of customers initially. This percentage will be increased over the following weeks.\n\nLean Technologies © 2025 Private and Confidential\n\n3 / 12"
+  },
+  {
+    "slide": 4,
+    "file": "slide-04.png",
+    "text": "Dark Mode\n\nWe took our learnings from the past years and redesigned our SDK, from the UI to the underlying technologies.\n\nLean Technologies © 2025 Private and Confidential\n\nMore intuitive MFA\n​experiences\n\nLink SDK\n\nImproving our User Experience\n\nRevisited copy \nand instructions\n\nRefined \nresponsiveness\n\nImproved layouts \nand inputs interactions\n\nFeatures\n\nSnappier interactions\n​and transitions\n\n4 / 12"
+  },
+  {
+    "slide": 5,
+    "file": "slide-05.png",
+    "text": "Latest updates to our SDK\n\nDouble MFA Guidance\n\nApplied to Connect & Pay\n\nInstructions based on MFA type\n\n5 / 12"
+  },
+  {
+    "slide": 6,
+    "file": "slide-06.png",
+    "text": "Latest updates to our SDK\n\nImproved copy and animations\n\nCovering ENBD X, EI+, FAB, RAK & Citi\n\nApplied to Connect & Pay\n\nApp Auth Improvements\n\n6 / 12"
+  },
+  {
+    "slide": 7,
+    "file": "slide-07.png",
+    "text": "Informed Balance Error\n\nLatest updates to our SDK\n\nImproved UI and messaging\n\nRetrieving suggested amount / max available\n\nRetrieving account used to pay\n\n7 / 12"
+  },
+  {
+    "slide": 8,
+    "file": "slide-08.png",
+    "text": "Streamlined screen\n\nSimpler messaging\n\nBetter timing and transitions\n\nImproved MFA guidance\n\nLatest updates to our SDK\n\n8 / 12"
+  },
+  {
+    "slide": 9,
+    "file": "slide-09.png",
+    "text": "9 / 12"
+  },
+  {
+    "slide": 10,
+    "file": "slide-10.png",
+    "text": "New Connect flow\n\n10 / 12"
+  },
+  {
+    "slide": 11,
+    "file": "slide-11.png",
+    "text": "New Payment flow\n\n11 / 12"
+  },
+  {
+    "slide": 12,
+    "file": "slide-12.png",
+    "text": "Demo\n\nFull connection and payment experience\n\nLean Technologies © 2025 Private and Confidential\n\n12 / 12"
+  }
+]
