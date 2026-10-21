@@ -6,6 +6,10 @@ import sdkOtp from '../../sources/link-sdk-v2/figma/mobile/light/connect-mfa-otp
 import sdkPayDark from '../../sources/link-sdk-v2/figma/mobile/dark/pay-confirm.png';
 import sdkStoryView from '../../sources/storybook/bank-priming-adcb.png';
 import flagOverview from '../../sources/flag-audit/overview.png';
+import flagBulk from '../../sources/flag-audit/selection-bar-menu.png';
+import flagVerdict from '../../sources/flag-audit/verdict-card.png';
+import flagMobile from '../../sources/flag-audit/mobile-overview.png';
+import flagDark from '../../sources/flag-audit/dark-mode.png';
 import dashPayments from '../../sources/dashboard/test/desktop/light/payments-date-range.png';
 import dashPalette from '../../sources/dashboard/test/desktop/light/customers-search-palette.png';
 import dashCustomer from '../../sources/dashboard/test/desktop/light/customers-detail.png';
@@ -103,6 +107,7 @@ export const projects: Project[] = [
     panel: 'var(--panel-lime)',
     size: 'small',
     layout: 'single',
+    href: '/work/flag-audit/',
     shots: [{ src: flagOverview, alt: 'Flag audit overview: 188 flags sorted into cleanup, review and active' }],
   },
 ];
@@ -134,4 +139,11 @@ export const linkSdk = {
     { src: sdkOtp, alt: 'Mobile: enter the one-time passcode' },
     { src: sdkPayDark, alt: 'Mobile: confirm payment in dark mode' },
   ] as Shot[],
+};
+
+export const flagAudit = {
+  bulk: { src: flagBulk, alt: 'Bulk actions menu for selected flags: archive in GrowthBook, remove from code or draft an owner check-in' } as Shot,
+  verdict: { src: flagVerdict, alt: 'Verdict card: safe to archive, with the evidence behind it' } as Shot,
+  mobile: { src: flagMobile, alt: 'Flag audit overview on a phone' } as Shot,
+  dark: { src: flagDark, alt: 'Flag audit overview in dark mode' } as Shot,
 };

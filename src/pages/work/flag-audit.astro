@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Arrow from '../../components/Arrow.astro';
+import Footer from '../../components/Footer.astro';
+import { projects, flagAudit } from '../../data/site';
+import '../../styles/case.css';
+
+const flags = projects.find((p) => p.title === 'Feature flag audit')!;
+const next = projects.find((p) => p.title === 'Link SDK 2.0')!;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const facts = [
+  { term: 'Made with', value: 'Claude Code' },
+  { term: 'Checks', value: '188 flags across 126 repos' },
+  { term: 'Sources', value: 'Code search, commit history, GrowthBook, Slack' },
+  { term: 'Year', value: flags.year },
+];
+
+const steps = [
+  {
+    title: 'Gather the evidence',
+    text: 'For every flag it searches the code, reads the commit history, checks GrowthBook’s own state and looks for mentions in Slack.',
+  },
+  {
+    title: 'A verdict per flag',
+    text: 'Each flag lands in cleanup, review or active, with a confidence score and the evidence that got it there, so nobody has to take it on trust.',
+  },
+  {
+    title: 'Hand off the cleanup',
+    text: 'Select some flags and it writes a ready-to-paste Claude Code prompt to archive them or strip them from the code, or a Slack message to check in with their owners.',
+  },
+];
+---
+
+<Base title="Feature flag audit — Sebastian Thomas" description="A small tool I vibe-coded with Claude Code to find dead GrowthBook flags across Lean’s repos.">
+  <header class="wrap top">
+    <a class="label" href={`${base}/`}>← Sebastian Thomas</a>
+    <span class="label muted">Lean Technologies · {flags.year}</span>
+  </header>
+
+  <main>
+    <section class="wrap title">
+      <h1 class="display">Feature flag audit</h1>
+      <p>A small tool I vibe-coded to find the feature flags we’d forgotten about, and help get rid of them.</p>
+    </section>
+
+    <dl class="wrap facts">
+      {
+        facts.map((f) => (
+          <div>
+            <dt class="label">{f.term}</dt>
+            <dd>{f.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <div class="wrap">
+      <div class="hero-panel full" style={`background: ${flags.panel}`}>
+        <Image src={flags.shots[0].src} alt={flags.shots[0].alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
+      </div>
+    </div>
+
+    <section class="wrap row">
+      <h2 class="label">What it is</h2>
+      <div class="prose">
+        <p>
+          Feature flags are great for shipping safely, but they pile up. This checks all 188 of Lean’s GrowthBook flags to find the
+          ones that are safe to remove.
+        </p>
+        <p class="soft">
+          I vibe-coded it with Claude Code. It’s an internal tool rather than a product, but it’s a good example of how I use AI for the
+          jobs that are too tedious to do by hand.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap row">
+      <h2 class="label">How it works</h2>
+      <div class="steps">
+        {
+          steps.map((s) => (
+            <div>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="wrap figures last-row">
+      <figure class="wide">
+        <div class="fig-panel sage">
+          <Image src={flagAudit.bulk.src} alt={flagAudit.bulk.alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
+        </div>
+        <figcaption class="label">Bulk actions for the selected flags</figcaption>
+      </figure>
+      <figure>
+        <div class="fig-panel lime">
+          <Image src={flagAudit.verdict.src} alt={flagAudit.verdict.alt} widths={[280, 560]} sizes="20rem" />
+        </div>
+        <figcaption class="label">The verdict on one flag</figcaption>
+      </figure>
+      <figure>
+        <div class="fig-panel mauve">
+          <Image src={flagAudit.mobile.src} alt={flagAudit.mobile.alt} widths={[390, 780]} sizes="20rem" />
+        </div>
+        <figcaption class="label">It works on a phone too</figcaption>
+      </figure>
+      <figure class="wide">
+        <div class="fig-panel blue">
+          <Image src={flagAudit.dark.src} alt={flagAudit.dark.alt} widths={[800, 1600, 2400]} sizes="(min-width: 80rem) 72rem, 90vw" />
+        </div>
+        <figcaption class="label">And in dark mode</figcaption>
+      </figure>
+    </section>
+
+    <a class="next" href={next.href}>
+      <div class="wrap next-inner">
+        <div>
+          <p class="label">Next</p>
+          <span class="display">{next.title}</span>
+        </div>
+        <span class="next-box"><Arrow size={52} strokeWidth={1.2} /></span>
+      </div>
+    </a>
+  </main>
+  <Footer />
+</Base>
