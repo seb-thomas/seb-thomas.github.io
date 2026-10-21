@@ -52,7 +52,7 @@ export const projects: Project[] = [
     stack: ['TypeScript', 'React', 'Radix UI', 'Storybook'],
     description:
       'A rebuild of the flow people use to connect their bank and pay inside other apps. A small team, a new component library and a slow rollout behind feature flags.',
-    panel: '#DDE2FB',
+    panel: 'var(--panel-blue)',
     size: 'feature',
     layout: 'dialog-and-phones',
     href: '/work/link-sdk/',
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     stack: ['React', 'React Query', 'Data tables'],
     description:
       'Where Lean’s clients run their integration: customers, payments, logs and bank connections, all one ⌘K away. I managed the team that built it, and wrote some of the frontend.',
-    panel: '#E4E7DA',
+    panel: 'var(--panel-sage)',
     size: 'feature',
     layout: 'main-and-side',
     href: 'https://dashboard.leantech.me/',
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     stack: ['Django', 'Claude API', 'Astro'],
     description:
       'Every book discussed on BBC Radio 4 and NPR, found by a daily pipeline and Claude, then checked against Google Books.',
-    panel: '#CEC6F6',
+    panel: 'var(--panel-mauve)',
     size: 'small',
     layout: 'single',
     href: 'https://radioreads.fun/',
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     stack: ['Claude Code', 'GrowthBook'],
     description:
       'A small tool I vibe-coded with Claude Code to find dead GrowthBook flags across 126 repos, and write the prompts to clean them up.',
-    panel: '#EEF3D0',
+    panel: 'var(--panel-lime)',
     size: 'small',
     layout: 'single',
     shots: [{ src: flagOverview, alt: 'Flag audit overview: 188 flags sorted into cleanup, review and active' }],

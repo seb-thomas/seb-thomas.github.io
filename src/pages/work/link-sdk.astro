@@ -193,14 +193,14 @@ const steps = [
   .hero-panel {
     margin-top: 3rem;
     padding: clamp(1.25rem, 6vw, 4.5rem);
-    background: #dde2fb;
+    background: var(--panel-blue);
   }
 
   .hero-panel img {
     max-width: min(100%, 40rem);
     margin: 0 auto;
     border-radius: 12px;
-    border: 1px solid #c6ccea;
+    border: 1px solid var(--shot-line);
   }
 
   .row {
@@ -274,7 +274,7 @@ const steps = [
   }
 
   .sage {
-    background: var(--sage);
+    background: var(--panel-sage);
   }
 
   .sage img {
@@ -285,7 +285,7 @@ const steps = [
   }
 
   .mauve {
-    background: #cec6f6;
+    background: var(--panel-mauve);
   }
 
   .phones img {
@@ -332,6 +332,7 @@ const steps = [
   .next {
     display: block;
     background: var(--lime);
+    color: var(--ink);
     text-decoration: none;
   }
 

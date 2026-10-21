@@ -287,7 +287,7 @@ const smalls = projects.filter((p) => p.size === 'small');
 
   .tile:nth-child(4) {
     background: var(--lime);
-    color: var(--fg);
+    color: var(--ink);
   }
 
   .tile:hover {
@@ -472,7 +472,7 @@ const smalls = projects.filter((p) => p.size === 'small');
     min-width: 0;
     max-width: 30rem;
     border-radius: 12px;
-    border: 1px solid #c6ccea;
+    border: 1px solid var(--shot-line);
   }
 
   .dialog-and-phones .phone {
@@ -504,7 +504,7 @@ const smalls = projects.filter((p) => p.size === 'small');
 
   .main-and-side img {
     border-radius: 6px;
-    border: 1px solid #cdd1c0;
+    border: 1px solid var(--shot-line);
   }
 
   .smalls {
@@ -547,7 +547,7 @@ const smalls = projects.filter((p) => p.size === 'small');
   }
 
   .arrow-mark {
-    color: var(--blue);
+    color: var(--accent);
     display: flex;
   }
 
@@ -565,7 +565,7 @@ const smalls = projects.filter((p) => p.size === 'small');
   }
 
   .meta .role {
-    color: var(--blue);
+    color: var(--accent);
   }
 
   .repo {
@@ -690,6 +690,7 @@ const smalls = projects.filter((p) => p.size === 'small');
   /* Contact */
   .contact {
     background: var(--lime);
+    color: var(--ink);
   }
 
   .contact-inner {
@@ -715,6 +716,10 @@ const smalls = projects.filter((p) => p.size === 'small');
     min-height: 44px;
     margin-top: 1.5rem;
     font-weight: 500;
+  }
+
+  .email:hover {
+    color: var(--blue);
   }
 
   .contact-box {
