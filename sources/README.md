@@ -46,6 +46,14 @@ Sessions are saved to `.auth/`, which is gitignored. Logging in to one mode can 
 
 Captured in the Storybook UI with Playwright at 1440×1060, deviceScaleFactor 2 (2880×2120). Re-run with `node scripts/capture-storybook.mjs`. To shoot other stories, edit `SHOTS`; story IDs are in https://ui.leantech.me/index.json.
 
+## Feature flag audit (Lean Technologies)
+
+| Source | URL | Notes |
+| --- | --- | --- |
+| Claude artifact "Flag Lifecycle Audit" | https://claude.ai/artifact/5weFQpjdZyyWemZY4grhsP | Internal: shared with the Lean org only. Built in the Claude Code chat "Feature flag audit". |
+
+Screenshots were taken by hand (2026-09-22) and supplied as a zip. They are stored in `flag-audit/` and listed in `manifest.json` with their original filenames.
+
 ## Radio Reads
 
 | Source | URL |

@@ -1,0 +1,43 @@
+[
+  {
+    "file": "overview.png",
+    "original": "01-overview.png",
+    "state": "overview",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "selection-bar-menu.png",
+    "original": "03-selection-bar-menu.png",
+    "state": "bulk actions menu",
+    "mode": "light",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "dark-mode.png",
+    "original": "06-dark-mode.png",
+    "state": "overview",
+    "mode": "dark",
+    "width": 2880,
+    "height": 1800
+  },
+  {
+    "file": "verdict-card.png",
+    "original": "02b-verdict-card.png",
+    "state": "verdict card",
+    "mode": "light",
+    "width": 560,
+    "height": 680
+  },
+  {
+    "file": "mobile-overview.png",
+    "original": "07a-mobile-overview.png",
+    "state": "overview",
+    "mode": "light",
+    "platform": "mobile",
+    "width": 780,
+    "height": 1688
+  }
+]

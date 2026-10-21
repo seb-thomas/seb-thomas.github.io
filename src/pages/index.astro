@@ -39,7 +39,7 @@ import { site, projects } from '../data/site';
               <p>{p.description}</p>
               <ul class="tags">
                 {p.tags.map((t) => (
-                  <li>{t}</li>
+                  <li class:list={{ vibes: t === 'Vibes' }}>{t}</li>
                 ))}
               </ul>
               {p.repo && (
@@ -148,6 +148,20 @@ import { site, projects } from '../data/site';
     border: 1px solid var(--line);
     border-radius: 999px;
     padding: 0.1rem 0.6rem;
+  }
+
+  .tags li.vibes {
+    color: #a21caf;
+    border-color: #f0abfc;
+    background: #fdf4ff;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tags li.vibes {
+      color: #f0abfc;
+      border-color: #86198f;
+      background: #2e0a33;
+    }
   }
 
   .shot {

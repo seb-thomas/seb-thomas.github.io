@@ -3,6 +3,9 @@ import radioReads from '../assets/projects/radio-reads.png';
 import linkSdk from '../../sources/link-sdk-v2/figma/desktop/light/connect-initial-payments.png';
 import sdkStoryView from '../../sources/storybook/bank-priming-adcb.png';
 import sdkStoryDocs from '../../sources/storybook/button-docs.png';
+import flagOverview from '../../sources/flag-audit/overview.png';
+import flagBulk from '../../sources/flag-audit/selection-bar-menu.png';
+import flagDark from '../../sources/flag-audit/dark-mode.png';
 import dashPayments from '../../sources/dashboard/test/desktop/light/payments-date-range.png';
 import dashPaymentMenu from '../../sources/dashboard/test/desktop/light/payments-row-menu.png';
 import dashCustomers from '../../sources/dashboard/test/desktop/light/customers-list.png';
@@ -68,6 +71,18 @@ export const projects: Project[] = [
     gallery: [
       { src: sdkStoryView, alt: 'Storybook showing the ADCB bank priming view with its controls' },
       { src: sdkStoryDocs, alt: 'Storybook docs page for the Button component with its props table' },
+    ],
+  },
+  {
+    title: 'Feature flag audit',
+    year: '2026',
+    description:
+      'Vibe-coded with Claude Code to clear out dead GrowthBook flags. It checks all 188 flags against code search across 126 repos, commit history, GrowthBook’s own state and Slack, then sorts each into cleanup, review or active with a confidence score and the evidence behind it. Selecting flags gives a ready-to-paste Claude Code prompt to archive them or strip them from code, or a Slack message to check in with owners.',
+    tags: ['Vibes', 'Claude Code', 'GrowthBook', 'GitHub', 'Slack'],
+    image: { src: flagOverview, alt: 'Flag audit overview: 188 flags sorted into archived, cleanup, review, active, excluded and unshipped' },
+    gallery: [
+      { src: flagBulk, alt: 'Bulk actions menu for selected flags: archive in GrowthBook, remove from code or draft an owner check-in' },
+      { src: flagDark, alt: 'Flag audit overview in dark mode' },
     ],
   },
   {
