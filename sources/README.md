@@ -11,6 +11,33 @@ Files in this folder are **not deployed**. Only images imported from `src/` end 
 | Figma (community file) | https://www.figma.com/design/eJ6wAodx2x8dCCcYmU46s9/Lean-Link-SDK-2.0--UAE----Community--Community-?node-id=1-21024 | Pages: `Desktop (UAE)` 1:21024, `Mobile (UAE)` 1:2. Exported at 2x into `link-sdk-v2/figma/`; node IDs are in `manifest.json`. |
 | Pitch deck "UAE Link SDK v2" | https://pitch.com/v/uae-link-sdk-v2---rain-wdpz5k | Passcode protected (passcode is not stored here). 12 slides captured at 3840×2160 into `link-sdk-v2/pitch/`, with slide text in `slides.json`. The deck's 6 videos (demo, MFA guidance, feature clips) are in `link-sdk-v2/pitch/video/`, named by slide. |
 
+## Dashboard (Lean Technologies)
+
+| Source | URL | Notes |
+| --- | --- | --- |
+| Live dashboard | https://dashboard.leantech.me/customers?page=1&size=15 | Needs a manual login (credentials are not stored here). Captured from a demo account with fake data, in both workspace modes: `dashboard/test/` and `dashboard/live/`. Files are listed in `dashboard/manifest.json`. |
+
+How the screenshots were captured:
+
+- Playwright Chromium at 1440×1060 (tall enough for a 15-row table with pagination) with deviceScaleFactor 2, so files are 2880×2120.
+- Every shot is exactly one viewport. There are no full-page captures.
+- Empty states ("No results", "No data available", "You haven't…") are skipped, so `live/` has no payments, payouts, account verification or test-users screens.
+- The yellow "You're using Test mode" banner is hidden before each Test shot.
+- Secondary states (detail drawers, menus, filters, date picker, create forms) were opened but never submitted. The ⌘K palette is opened over the customers list, and search results use `test` in Test mode (customers and payments) and `helper` in Live (customers only).
+- Light mode only, because the dashboard has no dark mode. There's no mobile set either, because at phone width the sidebar disappears and tables are cut off.
+- Billing is missing because it errors in Test mode and has no invoices in Live.
+
+To re-capture after a design change:
+
+```bash
+node scripts/dashboard-login.mjs test   # log in by hand, switch the workspace to Test, press Enter
+node scripts/capture-dashboard.mjs test
+node scripts/dashboard-login.mjs live   # same, with the workspace on Live
+node scripts/capture-dashboard.mjs live
+```
+
+Sessions are saved to `.auth/`, which is gitignored. Logging in to one mode can sign out the other, so capture each mode right after its login. Add `--only=customers-list,payments-detail` to re-shoot specific screens.
+
 ## Radio Reads
 
 | Source | URL |

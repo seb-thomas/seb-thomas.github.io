@@ -5,3 +5,6 @@ node_modules/
 .env.*
 .DS_Store
 npm-debug.log*
+
+# Saved browser sessions for screenshot capture (never commit)
+.auth/
