@@ -7,10 +7,10 @@ import ThemedImage from '../components/ThemedImage.astro';
 import { site, projects, about, approach } from '../data/site';
 
 const tiles = [
-  { href: '#work', label: 'Work', note: 'Things I’ve made' },
-  { href: '#about', label: 'About', note: 'The short version' },
-  { href: '#approach', label: 'Approach', note: 'How I like to work' },
-  { href: '#contact', label: 'Contact', note: 'Say hello' },
+  { href: '#work', label: 'Work' },
+  { href: '#about', label: 'About' },
+  { href: '#approach', label: 'Approach' },
+  { href: '#contact', label: 'Contact' },
 ];
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -34,10 +34,7 @@ const smalls = projects.filter((p) => p.size === 'small');
                 <span class="arrow">
                   <Arrow size={36} />
                 </span>
-                <span class="name">
-                  {t.label}
-                  <small>{t.note}</small>
-                </span>
+                <span class="name">{t.label}</span>
               </a>
             ))
           }
@@ -327,19 +324,6 @@ const smalls = projects.filter((p) => p.size === 'small');
     font-weight: 500;
   }
 
-  .name small {
-    display: block;
-    font-family: var(--mono);
-    font-size: 0.6875rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: var(--blue-soft);
-  }
-
-  .tile:nth-child(4) small {
-    color: inherit;
-  }
-
   /* On a phone the tiles stack into bars, with the surname down the right */
   @media (max-width: 40rem) {
     .hero {
@@ -399,10 +383,6 @@ const smalls = projects.filter((p) => p.size === 'small');
 
     .name {
       font-size: 1.1875rem;
-    }
-
-    .name small {
-      display: none;
     }
   }
 
